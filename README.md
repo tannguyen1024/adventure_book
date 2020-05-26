@@ -9,8 +9,7 @@
 
 ## Wireframe Example
 - A full overview image of the Adventure Book.  Utilize your browser's zoom feature or click the image for a larger view.
-![Wireframe](Wireframe/User.png)
-![Wireframe](Wireframe/Admin.png)
+![Wireframe](Wireframe/WIREFRAME.png)
 
 ## Deep Dive
 
@@ -20,12 +19,12 @@
 ### Standard View
 - Adventurers can login, choose a story, and make decisions in various branching *snippets* to reach an *ending*.  Once the adventurer has reached an *ending*, they can post a comment and view previous comments on that ending.
 
-![Standard View](Wireframe/User.png)
+![Standard View](Wireframe/USER.png)
 
 ### Administrator View
 - Adventurers with *administrator* access will have enhanced functionality such as the ability to create new *stories* & *snippets*.  They can also make changes to existing *stories* & *snippets*.  Administrators can delete comments left by adventurers on *ending* pages.  Stories will list which administrator created them.
 
-![Admin View](Wireframe/Admin.png)
+![Admin View](Wireframe/ADMIN.png)
 
 ## Components
 
