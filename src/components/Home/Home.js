@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
 
 // this could also be written with destructuring parameters as:
@@ -7,11 +8,26 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 // and then instead of `props.user.username` you could use `user.username`
 const UserPage = (props) => (
   <div>
-    <h1 id="welcome">
-      Welcome, { props.user.username }!
-    </h1>
-    <p>Your ID is: {props.user.id}</p>
-    <LogOutButton className="log-in" />
+    
+    {/* Standard View */}
+    
+    {props.user.admin===false && (
+      <>
+        <h1 id="welcome">Greetings Adventurer {props.user.username}!</h1>
+        <p>Your ID is: {props.user.id}</p>
+        <LogOutButton className="log-in" />
+      </>
+    )}
+
+    {/* Administrator View */}
+    
+    {props.user.admin && (
+      <>
+        <h2>Administrator Login {props.user.username}!</h2>
+        <p>Your ID is: {props.user.id}</p>
+        <LogOutButton className="log-in" />
+      </>
+    )}
   </div>
 );
 

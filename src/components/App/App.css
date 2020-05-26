@@ -1,4 +1,5 @@
 body {
+    background-image: url('../../images/background.jpg');
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0px;
 }
@@ -23,7 +24,7 @@ input {
 }
 
 .log-in, .log-out, .register {
-  background-color: #00acb0;
+  background-color: #3a1212;
   border-radius: 4px;
   color: #f8f8f8;
   min-height: 50px;
@@ -33,7 +34,7 @@ input {
 }
 
 .log-in:hover, .log-out:hover, .register:hover {
-  background-color: #008183;
+  background-color: #551d1d;
 }
 
 /* This line makes the "Register" and "Login" buttons look like links */

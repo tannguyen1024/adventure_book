@@ -25,7 +25,7 @@
 ![Standard View](Wireframe/USER.png)
 
 ### Administrator View
-- Adventurers with *administrator* access will have enhanced functionality such as the ability to create new *stories* & *snippets*.  They can also make changes to existing *stories* & *snippets*.  Administrators can delete comments left by adventurers on *ending* pages.  Stories will list which administrator created them.
+- Administrator access ramps up the fun!  Adventurers with *administrator* access will have the ability to create brand new *stories* & *snippets*.  They can also make changes to existing *stories* & *snippets*.  Administrators can delete comments left by adventurers on *ending* pages.  Stories will list which administrator created them.
 
 ![Admin View](Wireframe/ADMIN.png)
 
