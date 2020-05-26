@@ -5,7 +5,7 @@
 >Project Scoping Date: May 18th, 2020
 
 ## Project Summary
-- The **Adventure Book** is aimed to fully realize the joys of the *Choose Your Own Adventure* novels that were popular in the 90's.  It's not only a full fledged *Choose Your Own Adventure* application, but now you can also create your own *Choose Your Own Adventure* story from scratch!
+- The **Adventure Book** is aimed to fully realize the joys of the *Choose Your Own Adventure* novels that were popular in the 90’s.  These novels often started on one page and the reader would make decisions that would take them to a different page of the book.  This branching decision making made every reader’s experience different.  The *Adventure Book* doesn’t stop there however!  As an administrator, you can also create your own adventure from scratch with multiple branching paths and endings.
 
 ## Wireframe Example
 - A full overview image of the Adventure Book.  Utilize your browser's zoom feature or click the image for a larger view.
@@ -15,6 +15,9 @@
 
 ### Login Page
 - Every person who visits the Adventure Book is an **adventurer**!  Adventurers can start by creating their account at the login page.  Depending on the login, each adventurer's access determines which view they will see; an **administrator** or **standard** view.  Upon login, administrators have access to view all adventurers in a list and grant administrator access if necessary.
+
+![Standard View](Wireframe/LOGIN.png)
+![Standard View](Wireframe/NEW_USER.png)
 
 ### Standard View
 - Adventurers can login, choose a story, and make decisions in various branching *snippets* to reach an *ending*.  Once the adventurer has reached an *ending*, they can post a comment and view previous comments on that ending.
@@ -55,6 +58,9 @@
 [![Database](Wireframe/ERD.png)](https://dbdesigner.page.link/TXqVPfzEwVwzTyp66)
 
 ## Stretch Goals
+
+#### Text-To-Speech
+- Implementing *Text-To-Speech* will allow better accessibility to younger audiences and others with issues reading.
 
 #### Uppy
 - *Uppy* will allow administrators to upload images online from popular sites such as Facebook, Instagram, Dropbox, or even their local computer.  *Uppy* will then provide a URL that administrators can use for their stories and snippets.
