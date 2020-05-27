@@ -8,7 +8,7 @@ import { Button } from '@material-ui/core';
 // this could also be written with destructuring parameters as:
 // const UserPage = ({ user }) => (
 // and then instead of `props.user.username` you could use `user.username`
-const UserPage = (props) => (
+const Home = (props) => (
   <div>
     
     {/* Standard View */}
@@ -16,7 +16,9 @@ const UserPage = (props) => (
     {props.user.admin===false && (
       <>
         <h1 id="welcome">Greetings Adventurer {props.user.username}!</h1>
-        <Button variant="contained" color="primary">Choose a Story</Button>
+        <h3>Choose a Story</h3>
+          {JSON.stringify(props.story)}
+        {/* {props.story.map(story => <div>Hi</div>)} */}
       </>
     )}
 
@@ -37,8 +39,9 @@ const UserPage = (props) => (
 // if you wanted you could write this code like this:
 // const mapStateToProps = ({user}) => ({ user });
 const mapStateToProps = state => ({
-  user: state.user,
+  user: state.user, 
+  story: state.story
 });
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(UserPage);
+export default connect(mapStateToProps)(Home);
