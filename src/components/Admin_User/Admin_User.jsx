@@ -2,13 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Card, CardContent, CardActions, Typography, withStyles, Button } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import './Admin_User.css';
 
 const styles = {
     card: {
         maxWidth: 200,
         backgroundColor: 'rgba(255, 217, 154, 0.3)',
-        boxShadow: '3 3 3 3',
         marginLeft: '25px',
         marginTop: '25px',
     },
@@ -39,6 +37,9 @@ class Admin_User extends Component {
                                 <Typography variant="h5" component="h2">
                                     {user.username}
                                 </Typography>
+
+                                <br/>
+
                                 <Typography className={classes.pos} color="textSecondary">
                                     Admin Status:
                                 </Typography>
@@ -51,7 +52,7 @@ class Admin_User extends Component {
                             <CardActions>
                                 <Button variant="contained" color="primary" size="small">Promote to Admin</Button>
                             </CardActions>
-                        </Card><br /></div>)
+                        </Card></div>)
                 }
             </>
         )

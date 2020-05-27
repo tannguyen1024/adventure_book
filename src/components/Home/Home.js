@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import LogOutButton from '../LogOutButton/LogOutButton';
+// import { Link } from 'react-router-dom';
+// import LogOutButton from '../LogOutButton/LogOutButton';
 /* IMPORTS HERE */
 import { Button } from '@material-ui/core';
 
@@ -16,8 +16,7 @@ const UserPage = (props) => (
     {props.user.admin===false && (
       <>
         <h1 id="welcome">Greetings Adventurer {props.user.username}!</h1>
-        <p>Your ID is: {props.user.id}</p>
-        <LogOutButton className="log-in" />
+        <Button variant="contained" color="primary">Choose a Story</Button>
       </>
     )}
 
