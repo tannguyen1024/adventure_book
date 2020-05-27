@@ -9,12 +9,14 @@ import UserPage from '../Home/Home';
 import InfoPage from '../InfoPage/InfoPage';
 /* IMPORTS HERE */
 import Admin_Story_View from '../Admin_Story_View/Admin_Story_View.jsx';
+import Admin_User from '../Admin_User/Admin_User.jsx';
 
 import './App.css';
 
 class App extends Component {
   componentDidMount () {
     this.props.dispatch({type: 'FETCH_USER'})
+    this.props.dispatch({ type: 'FETCH_USER_ALL' })
   }
 
   render() {
@@ -36,10 +38,12 @@ class App extends Component {
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}
             <ProtectedRoute exact path="/info" component={InfoPage}/>
+            {/* Adds link to protected route. */}
+            <ProtectedRoute exact path="/admin_story_view" component={Admin_Story_View} />
+            <ProtectedRoute exact path="/admin_user" component={Admin_User} />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
-            {/* Adds link to protected route. */}
-            <ProtectedRoute exact path="/home" component={Admin_Story_View} />
+
           </Switch>
           <Footer />
         </div>

@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
+/* IMPORTS HERE */
+import { Button } from '@material-ui/core';
 
 // this could also be written with destructuring parameters as:
 // const UserPage = ({ user }) => (
@@ -23,9 +25,10 @@ const UserPage = (props) => (
     
     {props.user.admin && (
       <>
-        <h2>Administrator Login {props.user.username}!</h2>
-        <p>Your ID is: {props.user.id}</p>
-        <LogOutButton className="log-in" />
+        <h2>Administrator {props.user.username}'s Landing Page</h2>
+        <Button variant="contained" color="primary" onClick={() => {props.history.push('/admin_user')}}>Manage Adventurers</Button>
+        <Button variant="contained" color="primary">Manage Comments</Button>
+        <Button variant="contained" color="primary">View Stories</Button>
       </>
     )}
   </div>

@@ -4,6 +4,9 @@
 
 >Project Scoping Date: May 18th, 2020
 
+>Technologies Utilized: 
+```Postgresql (SQL), Express, Node, React, HTML5, CSS, Material UI```
+
 ## Project Summary
 - The **Adventure Book** is aimed to fully realize the joys of the *Choose Your Own Adventure* novels that were popular in the 90’s.  These novels often started on one page and the reader would make decisions that would take them to a different page of the book.  This branching decision making made every reader’s experience different.  The *Adventure Book* doesn’t stop there however!  As an administrator, you can also create your own adventure from scratch with multiple branching paths and endings.
 
