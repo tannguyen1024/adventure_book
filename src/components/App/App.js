@@ -10,6 +10,7 @@ import InfoPage from '../InfoPage/InfoPage';
 /* IMPORTS HERE */
 import Admin_Story_View from '../Admin_Story_View/Admin_Story_View.jsx';
 import Admin_User from '../Admin_User/Admin_User.jsx';
+import Story_Select from '../Story_Select/Story_Select.jsx';
 
 import './App.css';
 
@@ -42,6 +43,7 @@ class App extends Component {
             {/* Adds link to protected route. */}
             <ProtectedRoute exact path="/admin_story_view" component={Admin_Story_View} />
             <ProtectedRoute exact path="/admin_user" component={Admin_User} />
+            <ProtectedRoute exact path="/story_select" component={Story_Select} />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
 

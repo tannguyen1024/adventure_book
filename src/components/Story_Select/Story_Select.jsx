@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class Story_Select extends Component {
+    componentDidMount () {
+        // this.props.dispatch()
+    }
+
     render(){
         return(
             <>

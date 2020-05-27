@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 // import LogOutButton from '../LogOutButton/LogOutButton';
 /* IMPORTS HERE */
 import { Button } from '@material-ui/core';
-import { Card } from '@material-ui/core';
 
 // this could also be written with destructuring parameters as:
 // const UserPage = ({ user }) => (
@@ -14,6 +13,7 @@ class Home extends Component {
   startClick = (event, story) => {
     console.log(`You've clicked things!`, story)
     this.props.dispatch({ type: 'STORE_STORY', payload: story })
+    this.props.history.push('/story_select')
   }
 
   render() {
