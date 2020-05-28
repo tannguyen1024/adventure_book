@@ -79,3 +79,6 @@
 
 #### Obtainable Items
  - This will allow adventurers to obtain items such as a key which can unlock snippets that were not available to the adventurer previously.  These will be stored in the database for the current playthrough.
+
+ // localhost:5000/api/story/2/
+ // localhost:5000/:id/:thing/:something
