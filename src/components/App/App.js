@@ -8,9 +8,10 @@ import AboutPage from '../AboutPage/AboutPage';
 import Home from '../Home/Home';
 import InfoPage from '../InfoPage/InfoPage';
 /* IMPORTS HERE */
-import Admin_Story_View from '../Snippet_Begin/Snippet_Begin.jsx';
+// import Admin_Story_View from '../Snippet_Begin/Snippet_Begin.jsx';
 import Admin_User from '../Admin_User/Admin_User.jsx';
 import Story_Select from '../Story_Select/Story_Select.jsx';
+import Snippet_Page from '../Snippet_Page/Snippet_Page.jsx';
 
 import './App.css';
 
@@ -44,6 +45,7 @@ class App extends Component {
             {/* <ProtectedRoute exact path="/admin_story_view" component={Admin_Story_View} /> */}
             <ProtectedRoute exact path="/admin_user" component={Admin_User} />
             <ProtectedRoute exact path="/story/:id" component={Story_Select} />
+            <ProtectedRoute exact path="/snippet/:id" component={Snippet_Page} />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
 

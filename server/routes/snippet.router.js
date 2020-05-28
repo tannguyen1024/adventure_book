@@ -14,4 +14,15 @@ router.get('/:id', (req, res) => {
   })
 });
 
+router.get('/child/:id', (req, res) => {
+  id = req.params.id;
+  const query = `SELECT junction.id, parent, child, action FROM snippet JOIN junction ON snippet.id=junction.parent WHERE junction.parent=$1;`
+  pool.query(query, [id]).then((result) => {
+    console.log('Here are your results:',result.rows)
+    res.send(result.rows);
+  }).catch((error) => {
+    console.log(error)
+  })
+});
+
 module.exports = router;
