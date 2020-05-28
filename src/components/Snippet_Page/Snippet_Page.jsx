@@ -4,7 +4,7 @@ class Snippet_Page extends Component {
     render(){
         return(
             <>
-                Snippet_Page
+                <h1>{this.props.match.params.id}</h1>
             </>
         )
     }
