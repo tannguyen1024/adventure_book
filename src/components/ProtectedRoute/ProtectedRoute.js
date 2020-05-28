@@ -56,13 +56,13 @@ const ProtectedRoute = (props) => {
 // to determine which page we should show the user
 // if you wanted you could write this code like this:
 // const mapStateToProps = ({ user, loginMode }) => ({ user, loginMode });
-const mapStateToProps = (state) => {
+const reduxStateOnProps = (state) => {
   return {
     user: state.user,
     loginMode: state.loginMode,
   }
 }
 
-export default connect(mapStateToProps)(ProtectedRoute)
+export default connect(reduxStateOnProps)(ProtectedRoute)
 
 

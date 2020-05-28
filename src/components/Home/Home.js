@@ -27,7 +27,7 @@ class Home extends Component {
 
         <h1 id="welcome">Greetings Adventurer {this.props.user.username}!</h1>
 
-        {/* Administrator View */}
+        {/* Administrator Only Buttons */}
 
         {admin && (
           <>
@@ -42,8 +42,8 @@ class Home extends Component {
         {this.props.story.map(story => <div key={story.id}>
           <h5>{story.story_title}</h5>
           <img src={story.story_path} alt={story.story_title} width='300px' /><br />
-          {story.story_description}<br/>
-          by {story.author}<br/>
+          {story.story_description}<br />
+          by {story.author}<br />
           <Button variant="contained" color="secondary" onClick={(event) => this.startClick(event, story)}>
             {admin ? 'Edit' : 'Start'} {/* Conditionally Renders Start or Edit button */}
           </Button>
@@ -57,10 +57,10 @@ class Home extends Component {
 // Instead of taking everything from state, we just want the user info.
 // if you wanted you could write this code like this:
 // const mapStateToProps = ({user}) => ({ user });
-const mapStateToProps = state => ({
+const reduxStateOnProps = state => ({
   user: state.user,
   story: state.story
 });
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(Home);
+export default connect(reduxStateOnProps)(Home);
