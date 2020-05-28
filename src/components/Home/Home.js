@@ -41,7 +41,7 @@ class Home extends Component {
         <h3>Choose a Story</h3>
         {this.props.story.map(story => <div key={story.id}>
           <h5>{story.story_title}</h5>
-          <img src={story.story_path} alt={story.story_title} width='100px' /><br />
+          <img src={story.story_path} alt={story.story_title} width='300px' /><br />
           {story.story_description}<br/>
           by {story.author}<br/>
           <Button variant="contained" color="secondary" onClick={(event) => this.startClick(event, story)}>
