@@ -13,7 +13,7 @@ class Home extends Component {
   startClick = (event, story) => {
     console.log(`You've clicked things!`, story)
     this.props.dispatch({ type: 'STORE_STORY', payload: story })
-    this.props.history.push('/story_select')
+    this.props.history.push(`/story/${story.id}`)
   }
 
   render() {
@@ -57,9 +57,9 @@ class Home extends Component {
 // Instead of taking everything from state, we just want the user info.
 // if you wanted you could write this code like this:
 // const mapStateToProps = ({user}) => ({ user });
-const reduxStateOnProps = state => ({
-  user: state.user,
-  story: state.story
+const reduxStateOnProps = reduxState => ({
+  user: reduxState.user,
+  story: reduxState.story
 });
 
 // this allows us to use <App /> in index.js

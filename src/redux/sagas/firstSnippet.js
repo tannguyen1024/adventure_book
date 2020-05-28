@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
-// worker Saga: will be fired on "FETCH_USER" actions
 function* fetchSnippet(action) {
-    let id=action.payload.id;
+    console.log('In firstSnippet SAGA with:', action.payload)
+    let id=action.payload;
     try {
-        const response = yield axios.get(`/api/snippet/current/${id}`);
+        const response = yield axios.get(`/api/snippet/${id}`);
         yield put({ type: 'SET_FIRST_SNIPPET', payload: response.data });
     } catch (error) {
         console.log('User get request failed', error);
