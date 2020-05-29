@@ -24,6 +24,19 @@ const styles = {
     root: {
         maxWidth: 345,
     },
+    spicy: {
+        background: 'linear-gradient(10deg, #B39DDB 25%, #4DD0E1 100%)',
+        border: 0,
+        // borderRadius: 3,
+        boxShadow: '2px 2px 10px',
+        color: 'black',
+        height: 30,
+        // padding: '0 30px',
+        type: 'dark',
+    },
+    cursive: {
+        fontFamily: 'Courgette',
+    }
 };
 
 export default styles;

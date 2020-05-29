@@ -40,7 +40,7 @@ class Story_Select extends Component {
                         <CardActions>
                             {this.props.child.map(child =>
                                 <div key={child.id}>
-                                    <Button size="small" variant="contained" color="secondary" onClick={() => { this.props.history.push(`/snippet/${child.child}`) }}>{child.action}</Button><p />
+                                    <Button className={classes.spicy} size="small" variant="contained" color="secondary" onClick={() => { this.props.history.push(`/snippet/${child.child}`) }}>{child.action}</Button><p />
                                 </div>
                             )}
                         </CardActions>

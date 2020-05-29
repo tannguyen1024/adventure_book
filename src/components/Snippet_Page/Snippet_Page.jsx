@@ -57,7 +57,7 @@ class Snippet_Page extends Component {
                                 {snippet.snip_ending === false && <>
                                 {this.props.child.map(child =>
                                     <div key={child.id}>
-                                        <Button size="small" variant="contained" color="secondary" onClick={(event) => this.handleClick(child, event)}>{child.action}</Button><p />
+                                        <Button className={classes.spicy} size="small" variant="contained" color="secondary" onClick={(event) => this.handleClick(child, event)}>{child.action}</Button><p />
                                     </div>
 
                                 )}</>}

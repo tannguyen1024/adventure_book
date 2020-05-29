@@ -66,8 +66,9 @@ class Home extends Component {
             </CardActionArea>
             <CardActions>
               <Button variant="contained" color="secondary" onClick={(event) => this.startClick(event, story)}>
-                {admin ? 'Edit' : 'Start'} {/* Conditionally Renders Start or Edit button */}
+                Start {/* Conditionally Renders Start or Edit button */}
               </Button>
+              {admin && <Button variant="contained" color="secondary">Edit</Button>}
             </CardActions>
           </Card>
         </div>)}
