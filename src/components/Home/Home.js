@@ -35,8 +35,8 @@ class Home extends Component {
 
         {admin && (
           <>
-            <Button variant="contained" color="primary" onClick={() => { this.props.history.push('/admin_user') }}>Manage Adventurers</Button>
-            <Button variant="contained" color="primary">Manage Comments</Button>
+            <Button className={classes.spicy} variant="contained" color="primary" onClick={() => { this.props.history.push('/admin_user') }}>Manage Adventurers</Button>
+            <Button style={{marginLeft: 25}} className={classes.spicy} variant="contained" color="primary">Manage Comments</Button>
           </>
         )}
 
@@ -53,22 +53,22 @@ class Home extends Component {
                 title="Contemplative Reptile"
               /></Box>
               <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
+                <Typography className={classes.cursive} gutterBottom variant="h5" component="h2">
                   {story.story_title}
                 </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
+                <Typography className={classes.cursive} variant="body2" color="textSecondary" component="p">
                   {story.story_description}
                 </Typography>
                 <Typography variant="h9" color="textSecondary" component="p">
-                  <br/>Crafted by {story.author}
+                  <br />Crafted by {story.author}
                 </Typography>
               </CardContent>
             </CardActionArea>
             <CardActions>
-              <Button variant="contained" color="secondary" onClick={(event) => this.startClick(event, story)}>
+              <Button className={classes.spicy} variant="contained" color="secondary" onClick={(event) => this.startClick(event, story)}>
                 Start {/* Conditionally Renders Start or Edit button */}
               </Button>
-              {admin && <Button variant="contained" color="secondary">Edit</Button>}
+              {admin && <Button className={classes.spicy} variant="contained" color="secondary">Edit</Button>}
             </CardActions>
           </Card>
         </div>)}

@@ -39,13 +39,13 @@ class Snippet_Page extends Component {
                                 <Box boxShadow={3}><CardMedia
                                     className={classes.media}
                                     image={snippet.snip_path}
-                                    title="Contemplative Reptile"
+                                    title={snippet.snip_description}
                                 /></Box>
                                 <CardContent>
-                                    <Typography gutterBottom variant="h5" component="h2">
+                                    <Typography className={classes.cursive} gutterBottom variant="h5" component="h2">
                                         {snippet.snip_title}
                                     </Typography>
-                                    <Typography variant="body2" color="textSecondary" component="p">
+                                    <Typography className={classes.cursive} variant="body2" color="textSecondary" component="p">
                                         {snippet.snip_description} {snippet.snip_ending &&
                                             <> <h3>The End.</h3>
                                                  </>}
