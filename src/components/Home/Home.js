@@ -50,7 +50,7 @@ class Home extends Component {
               <Box boxShadow={3}><CardMedia
                 className={classes.media}
                 image={story.story_path}
-                title="Contemplative Reptile"
+                title={story.story_description}
               /></Box>
               <CardContent>
                 <Typography className={classes.cursive} gutterBottom variant="h5" component="h2">
