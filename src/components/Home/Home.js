@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 // import { Link } from 'react-router-dom';
 // import LogOutButton from '../LogOutButton/LogOutButton';
 /* IMPORTS HERE */
-import { Button } from '@material-ui/core';
+import { Box, Card, CardActionArea, CardMedia, CardContent, CardActions, Typography, withStyles, Button } from '@material-ui/core';
+import PropTypes from 'prop-types';
+import styles from '../Style/Style'
 
 // this could also be written with destructuring parameters as:
 // const UserPage = ({ user }) => (
@@ -21,10 +23,8 @@ class Home extends Component {
   }
 
   render() {
-
+    const { classes } = this.props;
     const admin = this.props.user.admin;
-
-
 
     return (
       <div>
@@ -44,19 +44,39 @@ class Home extends Component {
 
         <h3>Choose a Story</h3>
         {this.props.story.map(story => <div key={story.id}>
-          <h5>{story.story_title}</h5>
-          <img src={story.story_path} alt={story.story_title} width='300px' /><br />
-          {story.story_description}<br />
-          by {story.author}<br />
-          <Button variant="contained" color="secondary" onClick={(event) => this.startClick(event, story)}>
-            {admin ? 'Edit' : 'Start'} {/* Conditionally Renders Start or Edit button */}
-          </Button>
 
+          <Card className={classes.snippet}>
+            <CardActionArea>
+              <Box boxShadow={3}><CardMedia
+                className={classes.media}
+                image={story.story_path}
+                title="Contemplative Reptile"
+              /></Box>
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+                  {story.story_title}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  {story.story_description}
+                </Typography>
+                <Typography variant="h9" color="textSecondary" component="p">
+                  <br/>Crafted by {story.author}
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+            <CardActions>
+              <Button variant="contained" color="secondary" onClick={(event) => this.startClick(event, story)}>
+                {admin ? 'Edit' : 'Start'} {/* Conditionally Renders Start or Edit button */}
+              </Button>
+            </CardActions>
+          </Card>
         </div>)}
       </div>
     )
   }
 };
+
+Home.propTypes = { classes: PropTypes.object.isRequired };
 
 // Instead of taking everything from state, we just want the user info.
 // if you wanted you could write this code like this:
@@ -67,4 +87,4 @@ const reduxStateOnProps = reduxState => ({
 });
 
 // this allows us to use <App /> in index.js
-export default connect(reduxStateOnProps)(Home);
+export default connect(reduxStateOnProps)(withStyles(styles)(Home));
