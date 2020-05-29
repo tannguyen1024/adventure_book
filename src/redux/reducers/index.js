@@ -6,6 +6,8 @@ import userAll from './userAllReducer';
 import story from './storyReducer';
 import currentStory from './storeStoryReducer';
 import firstSnippetChild from './firstSnippetReducer';
+import snippet from './snippetReducer';
+import snippetChild from './snippetChildReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -20,7 +22,9 @@ const rootReducer = combineReducers({
   userAll,
   story,
   currentStory,
-  firstSnippetChild
+  firstSnippetChild,
+  snippet,
+  snippetChild,
 });
 
 export default rootReducer;

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {HashRouter as Router, Route, Redirect, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
@@ -45,7 +45,7 @@ class App extends Component {
             {/* <ProtectedRoute exact path="/admin_story_view" component={Admin_Story_View} /> */}
             <ProtectedRoute exact path="/admin_user" component={Admin_User} />
             <ProtectedRoute exact path="/story/:id" component={Story_Select} />
-            <ProtectedRoute exact path="/snippet/:id" component={Snippet_Page} />
+            <ProtectedRoute path="/snippet/:id" component={Snippet_Page} />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
 

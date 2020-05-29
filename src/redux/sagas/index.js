@@ -5,6 +5,7 @@ import userSaga from './userSaga';
 import userAllSaga from './userAllSaga';
 import storySaga from './storySaga';
 import firstSnippet from './firstSnippet';
+import snippet from './snippetSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -21,5 +22,6 @@ export default function* rootSaga() {
     userAllSaga(),
     storySaga(),
     firstSnippet(),
+    snippet(),
   ]);
 }
