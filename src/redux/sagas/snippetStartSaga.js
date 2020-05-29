@@ -15,8 +15,8 @@ function* fetchSnippet(action) {
     }
 }
 
-function* firstSnippet() {
+function* snippetStartSaga() {
     yield takeLatest('FETCH_FIRST_SNIPPET', fetchSnippet);
 }
 
-export default firstSnippet;
+export default snippetStartSaga;

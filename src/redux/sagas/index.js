@@ -4,7 +4,7 @@ import registrationSaga from './registrationSaga';
 import userSaga from './userSaga';
 import userAllSaga from './userAllSaga';
 import storySaga from './storySaga';
-import firstSnippet from './firstSnippet';
+import snippetStartSaga from './snippetStartSaga';
 import snippet from './snippetSaga';
 
 // rootSaga is the primary saga.
@@ -21,7 +21,7 @@ export default function* rootSaga() {
     userSaga(),
     userAllSaga(),
     storySaga(),
-    firstSnippet(),
+    snippetStartSaga(),
     snippet(),
   ]);
 }
