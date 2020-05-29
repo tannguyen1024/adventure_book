@@ -10,6 +10,10 @@ import { Button } from '@material-ui/core';
 // and then instead of `props.user.username` you could use `user.username`
 class Home extends Component {
 
+  componentDidMount = () => {
+    this.props.dispatch({ type: 'FETCH_STORY' })
+  }
+
   startClick = (event, story) => {
     console.log(`You've clicked things!`, story)
     this.props.dispatch({ type: 'STORE_STORY', payload: story })

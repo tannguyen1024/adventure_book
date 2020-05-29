@@ -19,12 +19,12 @@ const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   loginMode, // will have a value of 'login' or 'registration' to control which screen is shown
   user, // will have an id and username if someone is logged in
-  userAll,
-  story,
-  currentStory,
-  firstSnippetChild,
-  snippet,
-  snippetChild,
+  userAll, // Shows ALL users
+  story, // Shows ALL stories
+  currentStory, // Shows CURRENT story.
+  firstSnippetChild, // Shows CURRENT story's child
+  snippet, // Shows current snippet info
+  snippetChild, // Shows current snippet's children 
 });
 
 export default rootReducer;

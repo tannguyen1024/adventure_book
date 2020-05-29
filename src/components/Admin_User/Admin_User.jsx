@@ -2,23 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Card, CardContent, CardActions, Typography, withStyles, Button } from '@material-ui/core';
 import PropTypes from 'prop-types';
-
-const styles = {
-    card: {
-        maxWidth: 200,
-        backgroundColor: 'rgba(255, 217, 154, 0.3)',
-        marginLeft: '25px',
-        marginTop: '25px',
-    },
-    title: {
-        fontSize: 14,
-    },
-    pos: {
-        marginBottom: 12,
-    },
-};
+import styles from '../Style/Style.jsx';
 
 class Admin_User extends Component {
+
+    componentDidMount = () => {
+        this.props.dispatch({ type: 'FETCH_USER_ALL' })
+    }
 
     render() {
         const { classes } = this.props;
