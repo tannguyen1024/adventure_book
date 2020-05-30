@@ -1,7 +1,7 @@
 const styles = {
     card: {
         maxWidth: 200,
-        backgroundColor: 'rgba(255, 217, 154, 0.3)',
+        backgroundColor: 'rgba(222, 222, 222, 0.1)',
         marginLeft: '25px',
         marginTop: '25px',
     },

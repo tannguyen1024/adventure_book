@@ -11,7 +11,7 @@ import commentPost from './commentPostSaga';
 import storyPost from './storyPostSaga';
 import comment from './commentSaga';
 import deleteComment from './commentDeleteSaga';
-
+import userUpdate from './userUpdateSaga';
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
 // This is imported in index.js as rootSaga
@@ -33,5 +33,6 @@ export default function* rootSaga() {
     storyPost(),
     comment(), // All Comments Saga
     deleteComment(), // Deletes a Comment
+    userUpdate(), // Updates one user to admin
   ]);
 }

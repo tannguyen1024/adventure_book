@@ -10,6 +10,11 @@ class Admin_User extends Component {
         this.props.dispatch({ type: 'FETCH_USER_ALL' })
     }
 
+    handleClick = (event, user) => {
+        console.log('You are promoting:', user)
+        this.props.dispatch({ type: 'UPDATE_USER', payload: user})
+    }
+
     render() {
         const { classes } = this.props;
 
@@ -40,7 +45,7 @@ class Admin_User extends Component {
 
                             </CardContent>
                             <CardActions>
-                                <Button variant="contained" color="primary" size="small">Promote to Admin</Button>
+                                <Button onClick={(event) => this.handleClick (event, user.id)} className={classes.spicy} variant="contained" color="primary" size="small">Promote to Admin</Button>
                             </CardActions>
                         </Card></div>)
                 }

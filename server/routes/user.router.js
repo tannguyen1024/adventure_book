@@ -13,7 +13,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 });
 
 router.get('/all', (req, res) => {
-  const query = `SELECT * FROM "user";`
+  const query = `SELECT * FROM "user" ORDER BY "user"."id";`
   pool.query(query).then((result)=>{
     res.send(result.rows);
   }).catch((error)=>{
@@ -21,6 +21,17 @@ router.get('/all', (req, res) => {
     alert('Error with GET Route')
   })
 });
+
+router.put('/update/:id', (req, res) => {
+  console.log('Your ID is:',req.params.id)
+  const id = req.params.id;
+  const queryText = `UPDATE "user" SET admin=TRUE WHERE "user"."id" = $1`;
+  pool.query(queryText, [id]).then((result)=>{
+    res.sendStatus(200);
+  }).catch((error)=>{
+    console.log('An error occurred in PUT', error);
+  })
+})
 
 // Handles POST request with new user data
 // The only thing different from this and every other post we've seen
