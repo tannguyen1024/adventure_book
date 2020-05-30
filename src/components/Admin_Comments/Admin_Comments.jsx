@@ -10,6 +10,11 @@ class Admin_Comments extends Component {
         this.props.dispatch({ type: 'FETCH_COMMENT' })
     }
 
+    handleDelete = (event, comment) => {
+        console.log ('Your Comment is:',comment)
+        this.props.dispatch({ type: 'DELETE_COMMENT', payload: comment.comment_id})
+    }
+
     render() {
 
         const { classes } = this.props;
@@ -20,28 +25,30 @@ class Admin_Comments extends Component {
                     this.props.comment.map(comment => <div key={comment.comment}>
                         
                         <Card className={classes.snippet} variant="outlined">
-                            <CardContent><Grid item>
+                            <Box boxShadow={3}><CardMedia
+                                className={classes.media_comment}
+                                image={comment.snip_path}
+                                title={comment.snip_title}
+                            /></Box>
+                            <CardContent>
                                 <Typography className={classes.title} color="textSecondary" gutterBottom>
-                                    Story: {comment.story_title}<br />Snippet: {comment.snip_title}<br />{comment.comment_date}
+                                    Story: {comment.story_title} | {comment.snip_title}<br/>
+                                    {comment.comment_date}
                                     </Typography>
                                 <Typography variant="h5" component="h2">
-
-                                    </Typography></Grid>
-                                <Typography className={classes.pos} color="textSecondary">
-                                    {comment.username}
                                     </Typography>
-                                <Typography variant="body2" component="p">
-                                    {comment.comment}
+                                <Typography className={classes.pos} color="textPrimary">
+                                    Adventurer: {comment.username}
+                                    </Typography>
+                                <Typography className={classes.cursive_middle} variant="body2" component="p">
+                                    "{comment.comment}"
                                         <br />
-                                    Story: {comment.story_title} | Snippet: {comment.snip_title} | {comment.comment_date}
                                 </Typography>
                             </CardContent>
                             <CardActions>
-                                <Button size="small">Learn More</Button>
+                                <Button onClick={(event)=> this.handleDelete (event, comment)} className={classes.spicy_middle} size="small">Delete Post</Button>
                             </CardActions>
                             </Card>
-
-
                     </div>)
                 }
 

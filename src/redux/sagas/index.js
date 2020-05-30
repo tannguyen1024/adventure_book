@@ -10,6 +10,7 @@ import oneComment from './commentOneSaga';
 import commentPost from './commentPostSaga';
 import storyPost from './storyPostSaga';
 import comment from './commentSaga';
+import deleteComment from './commentDeleteSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -31,5 +32,6 @@ export default function* rootSaga() {
     commentPost(),
     storyPost(),
     comment(), // All Comments Saga
+    deleteComment(), // Deletes a Comment
   ]);
 }

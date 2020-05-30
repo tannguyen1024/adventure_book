@@ -21,6 +21,16 @@ const styles = {
             boxShadow: '3px 3px 50px black',
         }
     },
+    media_comment: {
+        width: 600,
+        paddingTop: '20%', // 16:9
+        boxShadow: '3px 3px 15px black',
+        transition: 'all 1s',
+        '&:hover': {
+            paddingTop: '25%',
+            boxShadow: '3px 3px 50px black',
+        }
+    },
     media_create: {
         width: 600,
         paddingTop: '30%', // 16:9
@@ -60,7 +70,37 @@ const styles = {
             boxShadow: '2px 2px 18px black',
         }
     },
+    spicy_middle: {
+        background: '#076585',  /* fallback for old browsers */
+        // background: linear-gradient(to left, #fff, #076585), /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        // background: 'rgb(63, 105, 251)',
+        background: 'linear-gradient(200deg, #606c88, #3f4c6b)',
+        border: 0,
+        // borderRadius: 3,
+        color: 'white',
+        boxShadow: '2px 2px 8px black',
+        height: 30,
+        // padding: '0 30px',
+        type: 'dark',
+        primary: { main: "#e91e63", contrastText: "#fff" },
+        secondary: { main: "#03a9f4", contrastText: "#fff" },
+        transition: 'all 0.5s',
+        display: 'inline-block', //Typically a button wouldn't need its own line        
+        margin: '0 auto',
+        width: '200px', //or whatever
+        '&:hover': {
+            backgroundColor: 'linear-gradient(200deg, #6b7896, #4c5b7d)',
+            boxShadow: '2px 2px 18px black',
+        }
+    },
     cursive: {
+        fontFamily: 'Courgette',
+    },
+    cursive_middle: {
+        textAlign: 'center',
+        // display: 'inline-block', //Typically a button wouldn't need its own line        
+        margin: '0 auto',
+        width: '200px', //or whatever
         fontFamily: 'Courgette',
     },
     ending: {

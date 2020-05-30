@@ -15,7 +15,7 @@ router.get('/:id', (req, res) => {
 
 /* Displays All Comments */
 router.get('/', (req, res) => {
-    const query = `SELECT * FROM "comment" 
+    const query = `SELECT comment.id as comment_id, comment.comment_date, comment.comment, username, story_title, snip_title, snip_path FROM "comment" 
 JOIN "user" ON "user"."id"=comment.user_id 
 JOIN "snippet" ON "snippet".id=comment.snippet_id
 JOIN "story" ON story.id="story_id"
@@ -36,6 +36,17 @@ router.post('/', (req, res) => {
         }).catch((error) => {
             console.log(error)
         })
+})
+
+router.delete('/:id', (req, res)=>{
+    let id = req.params.id;
+    const query = `DELETE FROM "comment" WHERE id=$1;`
+    pool.query(query, [id])
+    .then((result)=>{
+        res.sendStatus(200)
+    }).catch((error)=>{
+        console.log('ERROR in DELETE ROUTE',error)
+    })
 })
 
 module.exports = router;
