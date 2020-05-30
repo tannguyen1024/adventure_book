@@ -81,7 +81,14 @@ const styles = {
     },
     chip: {
         boxShadow: '2px 2px 7px black',
-    }
+    },
+    root2: {
+        flexGrow: 1,
+    },
+    paper: {
+        padding: 15,
+        textAlign: 'center',
+    },
 };
 
 export default styles;

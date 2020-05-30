@@ -10,15 +10,17 @@ router.get('/:id', (req, res) => {
         res.send(result.rows);
     }).catch((error) => {
         console.log(error)
-        alert('Error with GET Route')
     })
 });
 
 /* Displays All Comments */
-router.get('/all/', (req, res) => {
-    id = req.params.id;
-    const query = `SELECT * FROM "comment";`
-    pool.query(query, [id]).then((result) => {
+router.get('/', (req, res) => {
+    const query = `SELECT * FROM "comment" 
+JOIN "user" ON "user"."id"=comment.user_id 
+JOIN "snippet" ON "snippet".id=comment.snippet_id
+JOIN "story" ON story.id="story_id"
+ORDER BY comment_date DESC;`
+    pool.query(query).then((result) => {
         console.log('Here are your results:', result.rows)
         res.send(result.rows);
     }).catch((error) => {
@@ -29,11 +31,11 @@ router.get('/all/', (req, res) => {
 router.post('/', (req, res) => {
     const query = `INSERT INTO "comment" (user_id, comment, snippet_id) VALUES ($1, $2, $3);`;
     pool.query(query, [req.body.user, req.body.comment, req.body.snippet])
-    .then((result)=>{
-        res.sendStatus(201);
-    }).catch((error)=>{
-        console.log(error)
-    })
+        .then((result) => {
+            res.sendStatus(201);
+        }).catch((error) => {
+            console.log(error)
+        })
 })
 
 module.exports = router;

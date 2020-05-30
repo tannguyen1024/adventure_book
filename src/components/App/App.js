@@ -13,6 +13,7 @@ import Admin_User from '../Admin_User/Admin_User.jsx';
 import Story_Select from '../Story_Select/Story_Select.jsx';
 import Snippet_Page from '../Snippet_Page/Snippet_Page.jsx';
 import Admin_Create_Story from '../Admin_Create_Story/Admin_Create_Story.jsx';
+import Admin_Comments from '../Admin_Comments/Admin_Comments'
 // import { createMuiTheme, makeStyles, ThemeProvider} from '@material-ui/core/styles';
 
 import './App.css';
@@ -45,6 +46,7 @@ class App extends Component {
             {/* Adds link to protected route. */}
             {/* <ProtectedRoute exact path="/admin_story_view" component={Admin_Story_View} /> */}
             <ProtectedRoute exact path="/admin/user" component={Admin_User} />
+            <ProtectedRoute exact path="/admin/comments" component={Admin_Comments} />
             <ProtectedRoute exact path="/story/:id" component={Story_Select} />
             <ProtectedRoute path="/snippet/:id" component={Snippet_Page} />
             {/* If none of the other routes matched, we will show a 404. */}

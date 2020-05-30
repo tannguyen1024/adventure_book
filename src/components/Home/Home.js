@@ -36,7 +36,7 @@ class Home extends Component {
         {admin && (
           <>
             <Button className={classes.spicy} variant="contained" color="primary" onClick={() => { this.props.history.push('/admin/user') }}>Manage Adventurers</Button>
-            <Button style={{marginLeft: 25}} className={classes.spicy} variant="contained" color="primary">Manage Comments</Button>
+            <Button style={{ marginLeft: 25 }} className={classes.spicy} variant="contained" color="primary" onClick={() => { this.props.history.push('/admin/comments') }}>Manage Comments</Button>
             <Button style={{ marginLeft: 25 }} className={classes.spicy} variant="contained" color="primary" onClick={() => { this.props.history.push('/admin/create_story') }}>Create Story</Button>
           </>
         )}
