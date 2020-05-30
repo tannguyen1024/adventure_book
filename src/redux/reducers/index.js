@@ -8,6 +8,7 @@ import currentStory from './storeStoryReducer';
 import firstSnippetChild from './firstSnippetReducer';
 import snippet from './snippetReducer';
 import snippetChild from './snippetChildReducer';
+import oneComment from './oneCommentReducer'
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   firstSnippetChild, // Shows CURRENT story's child
   snippet, // Shows current snippet info
   snippetChild, // Shows current snippet's children 
+  oneComment, // Shows current snippet's comment
 });
 
 export default rootReducer;

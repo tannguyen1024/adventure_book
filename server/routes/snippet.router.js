@@ -48,4 +48,17 @@ router.get('/child/:id', (req, res) => {
   })
 });
 
+router.post('/start/:id', (req, res) => {
+  let storyId = req.params.id;
+  let defaultTitle = 'Snippet Title';
+  let defaultDescription = 'Adventurous Description';
+  const query = `INSERT INTO "snippet" (story_id, snip_title, snip_description) VALUES ($1, $2, $3);`;
+  pool.query(query, [storyId, defaultTitle, defaultDescription])
+    .then((result) => {
+      res.sendStatus(201);
+    }).catch((error) => {
+      console.log(error)
+    })
+})
+
 module.exports = router;

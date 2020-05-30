@@ -14,6 +14,22 @@ const styles = {
     media: {
         width: 600,
         paddingTop: '56.25%', // 16:9
+        boxShadow: '3px 3px 15px black',
+        transition: 'all 1s',
+        '&:hover': {
+            paddingTop: '65%',
+            boxShadow: '3px 3px 50px black',
+        }
+    },
+    media_create: {
+        width: 600,
+        paddingTop: '30%', // 16:9
+        boxShadow: '3px 3px 15px black',
+        transition: 'all 0.5s',
+        '&:hover': {
+            paddingTop: '35%',
+            boxShadow: '3px 3px 50px black',
+        }
     },
     title: {
         fontSize: 14,
@@ -32,16 +48,40 @@ const styles = {
         border: 0,
         // borderRadius: 3,
         color: 'white',
-        boxShadow: '1px 1px 5px black',
+        boxShadow: '2px 2px 8px black',
         height: 30,
         // padding: '0 30px',
         type: 'dark',
         primary: { main: "#e91e63", contrastText: "#fff" },
         secondary: { main: "#03a9f4", contrastText: "#fff" },
+        transition: 'all 0.5s',
+        '&:hover': {
+            backgroundColor: 'linear-gradient(200deg, #6b7896, #4c5b7d)',
+            boxShadow: '2px 2px 18px black',
+        }
     },
     cursive: {
         fontFamily: 'Courgette',
     },
+    ending: {
+        fontFamily: 'Courgette',
+        fontSize: 14,
+        marginTop: 15,
+        marginRight: 15,
+        float: 'right'
+    },
+    paper: {
+        maxWidth: 600,
+        backgroundColor: 'rgba(222, 222, 222, 0.1)',
+        margin: 25,
+        padding: 10,
+    },
+    shadow: {
+        boxShadow: '2px 2px 7px black',
+    },
+    chip: {
+        boxShadow: '2px 2px 7px black',
+    }
 };
 
 export default styles;

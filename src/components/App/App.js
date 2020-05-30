@@ -12,6 +12,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import Admin_User from '../Admin_User/Admin_User.jsx';
 import Story_Select from '../Story_Select/Story_Select.jsx';
 import Snippet_Page from '../Snippet_Page/Snippet_Page.jsx';
+import Admin_Create_Story from '../Admin_Create_Story/Admin_Create_Story.jsx';
 // import { createMuiTheme, makeStyles, ThemeProvider} from '@material-ui/core/styles';
 
 import './App.css';
@@ -37,12 +38,13 @@ class App extends Component {
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.
             Even though it seems like they are different pages, the user is always on localhost:3000/home */}
             <ProtectedRoute exact path="/home" component={Home}/>
+            <ProtectedRoute exact path="/admin/create_story" component={Admin_Create_Story}/>
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}
             <ProtectedRoute exact path="/info" component={InfoPage}/>
             {/* Adds link to protected route. */}
             {/* <ProtectedRoute exact path="/admin_story_view" component={Admin_Story_View} /> */}
-            <ProtectedRoute exact path="/admin_user" component={Admin_User} />
+            <ProtectedRoute exact path="/admin/user" component={Admin_User} />
             <ProtectedRoute exact path="/story/:id" component={Story_Select} />
             <ProtectedRoute path="/snippet/:id" component={Snippet_Page} />
             {/* If none of the other routes matched, we will show a 404. */}

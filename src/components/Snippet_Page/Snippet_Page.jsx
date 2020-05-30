@@ -30,6 +30,7 @@ class Snippet_Page extends Component {
     }
     render() {
         const { classes } = this.props;
+
         return (
             <>
                 {this.props.snippet.map(snippet =>
@@ -46,10 +47,14 @@ class Snippet_Page extends Component {
                                         {snippet.snip_title}
                                     </Typography>
                                     <Typography className={classes.cursive} variant="body2" color="textSecondary" component="p">
-                                        {snippet.snip_description} {snippet.snip_ending &&
-                                            <> <h3>The End.</h3>
-                                                 </>}
+                                        {snippet.snip_description} 
                                     </Typography>
+                                    <Typography className={classes.ending}>
+                                    {snippet.snip_ending &&
+                                        <>
+                                            The End.
+                                            </>
+                                        }</Typography>
                                 </CardContent>
                             </CardActionArea>
                             <CardActions>
@@ -66,7 +71,7 @@ class Snippet_Page extends Component {
                         </Card>
 
                         {snippet.snip_ending &&
-                            <> <br /><Divider /><br/><Comments /> </>}
+                            <> <br /><Divider /><br /><Comments id={this.props.match.params.id}/> </>}
 
                     </div>
                 )}

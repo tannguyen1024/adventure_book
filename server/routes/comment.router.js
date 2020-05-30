@@ -5,9 +5,8 @@ const router = express.Router();
 /* Displays Only Comments of One Snippet */
 router.get('/:id', (req, res) => {
     id = req.params.id;
-    const query = `SELECT * FROM comment JOIN snippet_comment ON comment.id=snippet_comment.comment_id JOIN snippet ON snippet.id=snippet_comment.snippet_id WHERE snippet.id=$1;`
+    const query = `SELECT * FROM comment JOIN "user" ON "user"."id"=comment.user_id WHERE snippet_id=$1 ORDER BY comment.id DESC;`
     pool.query(query, [id]).then((result) => {
-        console.log(result.rows)
         res.send(result.rows);
     }).catch((error) => {
         console.log(error)
@@ -18,7 +17,7 @@ router.get('/:id', (req, res) => {
 /* Displays All Comments */
 router.get('/all/', (req, res) => {
     id = req.params.id;
-    const query = `SELECT * FROM "comment;"`
+    const query = `SELECT * FROM "comment";`
     pool.query(query, [id]).then((result) => {
         console.log('Here are your results:', result.rows)
         res.send(result.rows);
@@ -26,5 +25,15 @@ router.get('/all/', (req, res) => {
         console.log(error)
     })
 });
+
+router.post('/', (req, res) => {
+    const query = `INSERT INTO "comment" (user_id, comment, snippet_id) VALUES ($1, $2, $3);`;
+    pool.query(query, [req.body.user, req.body.comment, req.body.snippet])
+    .then((result)=>{
+        res.sendStatus(201);
+    }).catch((error)=>{
+        console.log(error)
+    })
+})
 
 module.exports = router;

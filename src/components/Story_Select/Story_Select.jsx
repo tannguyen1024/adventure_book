@@ -21,7 +21,7 @@ class Story_Select extends Component {
         return (
             <>
                 {this.props.snippet.map(snippet =>
-                    <div><Card className={classes.snippet}>
+                    <div key={snippet.snippet_id}><Card className={classes.snippet}>
                         <CardActionArea>
                             <Box boxShadow={3}><CardMedia
                                 className={classes.media}

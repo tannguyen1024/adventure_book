@@ -35,14 +35,15 @@ class Home extends Component {
 
         {admin && (
           <>
-            <Button className={classes.spicy} variant="contained" color="primary" onClick={() => { this.props.history.push('/admin_user') }}>Manage Adventurers</Button>
+            <Button className={classes.spicy} variant="contained" color="primary" onClick={() => { this.props.history.push('/admin/user') }}>Manage Adventurers</Button>
             <Button style={{marginLeft: 25}} className={classes.spicy} variant="contained" color="primary">Manage Comments</Button>
+            <Button style={{ marginLeft: 25 }} className={classes.spicy} variant="contained" color="primary" onClick={() => { this.props.history.push('/admin/create_story') }}>Create Story</Button>
           </>
         )}
 
         {/* Standard View */}
 
-        <h3>Choose a Story</h3>
+        <h2>Choose Your Story</h2>
         {this.props.story.map(story => <div key={story.id}>
 
           <Card className={classes.snippet}>
@@ -59,8 +60,8 @@ class Home extends Component {
                 <Typography className={classes.cursive} variant="body2" color="textSecondary" component="p">
                   {story.story_description}
                 </Typography>
-                <Typography variant="h9" color="textSecondary" component="p">
-                  <br />Crafted by {story.author}
+                <Typography className={classes.cursive} color="textSecondary" component="h6">
+                  Crafted by {story.author}
                 </Typography>
               </CardContent>
             </CardActionArea>
