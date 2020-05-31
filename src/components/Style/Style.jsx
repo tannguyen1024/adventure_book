@@ -45,12 +45,21 @@ const styles = {
         fontSize: 14,
     },
     pos: {
-        marginBottom: 12,
+        fontSize: 14,
+        fontFamily: 'Courgette',
+        textAlign: 'right',
+    },
+    pos2: {
+        fontSize: 20,
+        fontFamily: 'Courgette',
+        position: 'absolute',
+        textAlign: 'text-top',
     },
     root: {
         maxWidth: 345,
     },
     spicy: {
+        fontFamily: 'Indie Flower',
         background: '#076585',  /* fallback for old browsers */
         // background: linear-gradient(to left, #fff, #076585), /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
         // background: 'rgb(63, 105, 251)',
@@ -71,6 +80,7 @@ const styles = {
         }
     },
     spicy_middle: {
+        fontFamily: 'Indie Flower',
         background: '#076585',  /* fallback for old browsers */
         // background: linear-gradient(to left, #fff, #076585), /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
         // background: 'rgb(63, 105, 251)',
@@ -94,7 +104,7 @@ const styles = {
         }
     },
     cursive: {
-        fontFamily: 'Courgette',
+        fontFamily: 'Courgette', 
     },
     cursive_middle: {
         textAlign: 'center',
@@ -124,10 +134,6 @@ const styles = {
     },
     root2: {
         flexGrow: 1,
-    },
-    paper: {
-        padding: 15,
-        textAlign: 'center',
     },
 };
 

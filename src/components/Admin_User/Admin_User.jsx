@@ -25,27 +25,27 @@ class Admin_User extends Component {
                         <div key={user.id}><Card className={classes.card}>
                             <CardContent>
 
-                                <Typography className={classes.title} color="textSecondary" gutterBottom>
+                                <Typography className={classes.title && classes.cursive} color="textSecondary" gutterBottom>
                                     Name
                                 </Typography>
 
-                                <Typography variant="h5" component="h2">
+                                <Typography className={classes.cursive} variant="h5" component="h2">
                                     {user.username}
                                 </Typography>
 
                                 <br/>
 
-                                <Typography className={classes.pos} color="textSecondary">
+                                <Typography className={classes.title && classes.cursive} color="textSecondary">
                                     Admin Status:
                                 </Typography>
 
-                                <Typography component="p">
+                                <Typography className={classes.cursive} component="p">
                                     {user.admin ? 'Yes' : 'No'}
                                 </Typography>
 
                             </CardContent>
                             <CardActions>
-                                <Button onClick={(event) => this.handleClick (event, user.id)} className={classes.spicy} variant="contained" color="primary" size="small">Promote to Admin</Button>
+                                {user.admin ? '' : <Button onClick={(event) => this.handleClick(event, user.id)} className={classes.spicy} variant="contained" color="primary" size="small">Promote to Admin</Button>}
                             </CardActions>
                         </Card></div>)
                 }

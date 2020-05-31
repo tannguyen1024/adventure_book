@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import styles from '../Style/Style'
 
 class Admin_Create_Story extends Component {
-    state = {user_id: this.props.user.id, story_title: '', story_description: '', story_path: ''}
+    state = { user_id: this.props.user.id, story_title: '', story_description: '', story_path: 'https://cdn.pixabay.com/photo/2017/07/22/11/46/adventure-2528477_1280.jpg'}
 
     handleTitle = (event) => {
         this.setState({story_title: event.target.value});
@@ -18,7 +18,8 @@ class Admin_Create_Story extends Component {
     }
     handleSubmit = () => {
         this.props.dispatch({type: 'POST_STORY', payload: this.state});
-        this.props.history.push(`/home`)
+        this.props.dispatch({ type: 'FETCH_STORY' });
+        this.props.history.push(`/home`);
     }
 
     render() {
@@ -38,10 +39,10 @@ class Admin_Create_Story extends Component {
                                 <Typography className={classes.cursive} gutterBottom variant="h5" component="h2">
                                     <label>Title: </label><Input onChange={this.handleTitle} multiline placeholder="Insert story title here."/>
                                 </Typography>
-                                <Typography className={classes.cursive} variant="body2" color="textSecondary" component="p">
+                                <Typography className={classes.cursive} variant="body2" color="textSecondary" component="h1">
                                     <label>Description: </label><TextField onChange={this.handleDescription} color="secondary" multiline fullWidth={true} placeholder="Insert a description of your story here."/>
                                 </Typography>
-                                <Typography className={classes.cursive} variant="body2" color="textSecondary" component="p">
+                                <Typography className={classes.cursive} variant="body2" color="textSecondary" component="h1">
                                     <label>Image URL: </label><TextField onChange={this.handlePath} color="secondary" multiline fullWidth={true} placeholder="Insert path to image here.  Example: http://address.com/picture.png"/>
                                 </Typography>
                             </CardContent>

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Chip, TextField, Paper, Grid, Avatar, Box, Divider, Card, CardActionArea, CardMedia, CardContent, CardActions, Typography, withStyles, Button } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import styles from '../Style/Style.jsx';
+const moment = require('moment');
 
 class Admin_Comments extends Component {
 
@@ -22,34 +23,34 @@ class Admin_Comments extends Component {
         return (
             <>
                 {
-                    this.props.comment.map(comment => <div key={comment.comment}>
-                        
-                        <Card className={classes.snippet} variant="outlined">
-                            <Box boxShadow={3}><CardMedia
-                                className={classes.media_comment}
-                                image={comment.snip_path}
-                                title={comment.snip_title}
-                            /></Box>
-                            <CardContent>
-                                <Typography className={classes.title} color="textSecondary" gutterBottom>
-                                    Story: {comment.story_title} | {comment.snip_title}<br/>
-                                    {comment.comment_date}
+                    this.props.comment.map(comment => 
+                    { let date = moment(comment.comment_date).format(`MMM Do YYYY hh:mm A`);
+                        return (<div key={comment.comment}>
+                            <Card className={classes.snippet} variant="outlined">
+                                <Box boxShadow={3}><CardMedia
+                                    className={classes.media_comment}
+                                    image={comment.snip_path}
+                                    title={comment.snip_title}
+                                /></Box>
+                                <CardContent>
+                                    <Typography className={classes.pos} color="textSecondary" gutterBottom>
+                                        {comment.story_title} | {comment.snip_title}<br />
+                                        {date}
                                     </Typography>
-                                <Typography variant="h5" component="h2">
+                                    <Typography className={classes.pos2} color="textPrimary">
+                                        {comment.username}
                                     </Typography>
-                                <Typography className={classes.pos} color="textPrimary">
-                                    Adventurer: {comment.username}
-                                    </Typography>
-                                <Typography className={classes.cursive_middle} variant="body2" component="p">
-                                    "{comment.comment}"
+                                    <Typography className={classes.cursive_middle} variant="body2" component="p">
+                                        "{comment.comment}"
                                         <br />
-                                </Typography>
-                            </CardContent>
-                            <CardActions>
-                                <Button onClick={(event)=> this.handleDelete (event, comment)} className={classes.spicy_middle} size="small">Delete Post</Button>
-                            </CardActions>
+                                    </Typography>
+                                </CardContent>
+                                <CardActions>
+                                    <Button onClick={(event) => this.handleDelete(event, comment)} className={classes.spicy_middle} size="small">Delete Post</Button>
+                                </CardActions>
                             </Card>
-                    </div>)
+                        </div>)}
+                    )
                 }
 
             </>

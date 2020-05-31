@@ -22,6 +22,12 @@ class Home extends Component {
     this.props.history.push(`/story/${story.id}`)
   }
 
+  editClick = (event, story) => {
+    this.props.dispatch({ type: 'GET_EDIT_STORY', payload: story.id });
+    console.log(`You've clicked things!`, story)
+    this.props.history.push(`/story/edit/${story.id}`)
+  }
+
   render() {
     const { classes } = this.props;
     const admin = this.props.user.admin;
@@ -69,7 +75,7 @@ class Home extends Component {
               <Button className={classes.spicy} variant="contained" color="secondary" onClick={(event) => this.startClick(event, story)}>
                 Start {/* Conditionally Renders Start or Edit button */}
               </Button>
-              {admin && <Button className={classes.spicy} variant="contained" color="secondary">Edit</Button>}
+              {admin && <Button className={classes.spicy} variant="contained" color="secondary" onClick={(event) => this.editClick(event, story)}>Edit</Button>}
             </CardActions>
           </Card>
         </div>)}

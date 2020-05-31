@@ -15,7 +15,7 @@ class Snippet_Page extends Component {
     }
 
     componentDidMount = () => {
-        console.log('History is', this.props.history);
+        // console.log('History is', this.props.history);
         console.log(this.props.match.params.id);
         this.props.dispatch({ type: 'FETCH_SNIPPET', payload: this.props.match.params.id });
     }

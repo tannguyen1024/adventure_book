@@ -10,6 +10,7 @@ import snippet from './snippetReducer';
 import snippetChild from './snippetChildReducer';
 import oneComment from './oneCommentReducer';
 import allComment from './commentReducer';
+import editStory from './editStoryReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -29,6 +30,7 @@ const rootReducer = combineReducers({
   snippetChild, // Shows current snippet's children 
   oneComment, // Shows current snippet's comment
   allComment, // Shows all comments
+  editStory, // Sets the current story to edit
 });
 
 export default rootReducer;

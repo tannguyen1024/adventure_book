@@ -1,19 +1,19 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
-import Nav from '../Nav/Nav';
-import Footer from '../Footer/Footer';
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-import AboutPage from '../AboutPage/AboutPage';
+import Nav from '../Structure/Nav/Nav';
+import Footer from '../Structure/Footer/Footer';
+import ProtectedRoute from '../Structure/ProtectedRoute/ProtectedRoute';
+import AboutPage from '../Structure/AboutPage/AboutPage';
 import Home from '../Home/Home';
-import InfoPage from '../InfoPage/InfoPage';
+import InfoPage from '../Structure/InfoPage/InfoPage';
 /* IMPORTS HERE */
-// import Admin_Story_View from '../Snippet_Begin/Snippet_Begin.jsx';
 import Admin_User from '../Admin_User/Admin_User.jsx';
 import Story_Select from '../Story_Select/Story_Select.jsx';
 import Snippet_Page from '../Snippet_Page/Snippet_Page.jsx';
 import Admin_Create_Story from '../Admin_Create_Story/Admin_Create_Story.jsx';
-import Admin_Comments from '../Admin_Comments/Admin_Comments'
+import Admin_Comments from '../Admin_Comments/Admin_Comments';
+import Admin_Edit_Story from '../Admin_Edit_Story/Admin_Edit_Story';
 // import { createMuiTheme, makeStyles, ThemeProvider} from '@material-ui/core/styles';
 
 import './App.css';
@@ -47,6 +47,7 @@ class App extends Component {
             {/* <ProtectedRoute exact path="/admin_story_view" component={Admin_Story_View} /> */}
             <ProtectedRoute exact path="/admin/user" component={Admin_User} />
             <ProtectedRoute exact path="/admin/comments" component={Admin_Comments} />
+            <ProtectedRoute exact path="/story/edit/:id" component={Admin_Edit_Story} />
             <ProtectedRoute exact path="/story/:id" component={Story_Select} />
             <ProtectedRoute path="/snippet/:id" component={Snippet_Page} />
             {/* If none of the other routes matched, we will show a 404. */}

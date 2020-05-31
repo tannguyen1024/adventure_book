@@ -26,6 +26,18 @@ JOIN "user" on "user"."id"=author.user_id WHERE story.id=$1;`
   })
 });
 
+router.get('/edit/:id', (req, res) => {
+  const storyId = req.params.id;
+  const query = `SELECT * FROM "story" WHERE story.id=$1;`
+  pool.query(query, [storyId]).then((result) => {
+    console.log('Result.rows from EDIT Story is:', result.rows[0])
+    res.send(result.rows[0]);
+  }).catch((error) => {
+    console.log(error)
+    alert('Error with GET Route')
+  })
+});
+
 router.post('/', (req, res) => {
   const query = `INSERT INTO "story" (user_id, story_title, story_description, story_path) VALUES ($1, $2, $3, $4) RETURNING id;`;
   pool.query(query, [req.body.user_id, req.body.story_title, req.body.story_description, req.body.story_path])

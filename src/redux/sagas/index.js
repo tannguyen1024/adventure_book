@@ -12,6 +12,8 @@ import storyPost from './storyPostSaga';
 import comment from './commentSaga';
 import deleteComment from './commentDeleteSaga';
 import userUpdate from './userUpdateSaga';
+import adminEditStory from './adminEditStorySaga';
+
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
 // This is imported in index.js as rootSaga
@@ -21,6 +23,7 @@ import userUpdate from './userUpdateSaga';
 // and login triggers setting the user
 export default function* rootSaga() {
   yield all([
+    adminEditStory(),
     loginSaga(),
     registrationSaga(),
     userSaga(),
@@ -34,5 +37,6 @@ export default function* rootSaga() {
     comment(), // All Comments Saga
     deleteComment(), // Deletes a Comment
     userUpdate(), // Updates one user to admin
+    adminEditStory(),
   ]);
 }

@@ -6,38 +6,56 @@ import styles from '../Style/Style'
 
 class Admin_Create_Story extends Component {
 
+    state = { story_id: this.props.editStory.story_title, story_title: '', story_description: '', story_path: '', user_id: this.props.user.id }
+
+    componentDidMount = () => {
+        this.props.dispatch({ type: 'GET_EDIT_STORY', payload: this.props.match.params.id });
+    }
+
+    handleChangePath = (event) => {
+        this.setState({story_path: event.target.value})
+    }
+
+    handleClick = () => {
+        console.log('State is:', this.state)
+    }
+
     render() {
+        let story=this.props.editStory;
         const { classes } = this.props;
         return (
             <>
-                <div>
                     <Card className={classes.snippet}>
                         <CardActionArea>
-                            <Box boxShadow={3}>
-                                <CardMedia
+                        {this.state.story_path === '' ? 
+                            <CardMedia
                                 className={classes.media}
-                                image='../create.jpeg'
+                                image={story.story_path}
                                 title='Crafting an adventure!'
-                            /></Box>
+                            /> : 
+                            <CardMedia
+                                className={classes.media}
+                                image={this.state.story_path}
+                                title='Crafting an adventure!'
+                            />}
                             <CardContent>
                                 <Typography className={classes.cursive} gutterBottom variant="h5" component="h2">
-                                    <label>Title: </label><Input multiline placeholder="Insert story title here."/>
+                                    <label>Title: </label><Input multiline defaultValue={story.story_title} placeholder="Insert story title here." />
                                 </Typography>
-                                <Typography className={classes.cursive} variant="body2" color="textSecondary" component="p">
-                                    <label>Description: </label><TextField color="secondary" multiline fullWidth={true} placeholder="Insert a description of your story here."/>
+                                <Typography className={classes.cursive} variant="body2" color="textSecondary" component="div">
+                                <label>Description: </label><TextField color="secondary" defaultValue={story.story_description} multiline fullWidth={true} placeholder="Insert description here." />
                                 </Typography>
-                                <Typography className={classes.cursive} variant="body2" color="textSecondary" component="p">
-                                    <label>Image URL: </label><TextField color="secondary" multiline fullWidth={true} placeholder="Insert path to image here.  Example: http://address.com/picture.png"/>
+                            <Typography className={classes.cursive} variant="body2" color="textSecondary" component="div">
+                                    <label>Image URL: </label><TextField onChange={this.handleChangePath} color="secondary" defaultValue={story.story_path} multiline fullWidth={true} placeholder="Insert path to image here.  Example: http://address.com/picture.png" />
                                 </Typography>
                             </CardContent>
                         </CardActionArea>
                         <CardActions>
-                            <Button className={classes.spicy} variant="contained" color="secondary">
-                                Submit your Story {/* Conditionally Renders Start or Edit button */}
+                            <Button onClick={this.handleClick} className={classes.spicy} variant="contained" color="secondary">
+                                Submit your Changes {/* Conditionally Renders Start or Edit button */}
                             </Button>
                         </CardActions>
                     </Card>
-                </div>
             </>
         )
     }
@@ -50,7 +68,8 @@ Admin_Create_Story.propTypes = { classes: PropTypes.object.isRequired };
 // const mapStateToProps = ({user}) => ({ user });
 const reduxStateOnProps = reduxState => ({
     user: reduxState.user,
-    story: reduxState.story
+    story: reduxState.story,
+    editStory: reduxState.editStory
 });
 
 // this allows us to use <App /> in index.js
