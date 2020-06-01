@@ -18,7 +18,7 @@ class Home extends Component {
 
   startClick = (event, story) => {
     console.log(`You've clicked things!`, story)
-    this.props.dispatch({ type: 'STORE_STORY', payload: story })
+    // this.props.dispatch({ type: 'STORE_STORY', payload: story })
     this.props.history.push(`/story/${story.id}`)
   }
 
