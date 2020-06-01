@@ -17,7 +17,7 @@ class Admin_Create_Story extends Component {
         this.setState({ story_path: event.target.value });
     }
     handleSubmit = () => {
-        this.props.dispatch({type: 'POST_STORY', payload: this.state});
+        this.props.dispatch({ type: 'POST_STORY', payload: this.state});
         this.props.dispatch({ type: 'FETCH_STORY' });
         this.props.history.push(`/home`);
     }

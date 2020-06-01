@@ -13,6 +13,7 @@ import comment from './commentSaga';
 import deleteComment from './commentDeleteSaga';
 import userUpdate from './userUpdateSaga';
 import adminEditStory from './adminEditStorySaga';
+import storyUpdate from './storyUpdateSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -38,5 +39,6 @@ export default function* rootSaga() {
     deleteComment(), // Deletes a Comment
     userUpdate(), // Updates one user to admin
     adminEditStory(),
+    storyUpdate(), // Edit one story
   ]);
 }

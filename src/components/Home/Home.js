@@ -25,7 +25,7 @@ class Home extends Component {
   editClick = (event, story) => {
     this.props.dispatch({ type: 'GET_EDIT_STORY', payload: story.id });
     console.log(`You've clicked things!`, story)
-    this.props.history.push(`/story/edit/${story.id}`)
+    this.props.history.push(`/story/edit/${story.id}`);
   }
 
   render() {
