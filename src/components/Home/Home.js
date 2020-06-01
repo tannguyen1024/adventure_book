@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 /* IMPORTS HERE */
 import { Box, Card, CardActionArea, CardMedia, CardContent, CardActions, Typography, withStyles, Button } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import styles from '../Style/Style'
+import styles from '../Style/Style';
+import EditIcon from '@material-ui/icons/Edit';
 
 // this could also be written with destructuring parameters as:
 // const UserPage = ({ user }) => (
@@ -17,8 +18,7 @@ class Home extends Component {
   }
 
   startClick = (event, story) => {
-    console.log(`You've clicked things!`, story)
-    // this.props.dispatch({ type: 'STORE_STORY', payload: story })
+    this.props.dispatch({ type: 'FETCH_FIRST_SNIPPET', payload: story.id })
     this.props.history.push(`/story/${story.id}`)
   }
 
@@ -61,7 +61,7 @@ class Home extends Component {
               /></Box>
               <CardContent>
                 <Typography className={classes.cursive} gutterBottom variant="h5" component="h2">
-                  {story.story_title}
+                  {story.story_title} {admin && <Button className={classes.spicy_edit} variant="contained" color="secondary" onClick={(event) => this.editClick(event, story)}><EditIcon /></Button>}
                 </Typography>
                 <Typography className={classes.cursive} variant="body2" color="textSecondary" component="p">
                   {story.story_description}
@@ -75,7 +75,6 @@ class Home extends Component {
               <Button className={classes.spicy} variant="contained" color="secondary" onClick={(event) => this.startClick(event, story)}>
                 Start {/* Conditionally Renders Start or Edit button */}
               </Button>
-              {admin && <Button className={classes.spicy} variant="contained" color="secondary" onClick={(event) => this.editClick(event, story)}>Edit</Button>}
             </CardActions>
           </Card>
         </div>)}
@@ -91,7 +90,8 @@ Home.propTypes = { classes: PropTypes.object.isRequired };
 // const mapStateToProps = ({user}) => ({ user });
 const reduxStateOnProps = reduxState => ({
   user: reduxState.user,
-  story: reduxState.story
+  story: reduxState.story,
+  firstSnippet: reduxState.firstSnippet
 });
 
 // this allows us to use <App /> in index.js

@@ -4,7 +4,6 @@ import Comments from '../Comments/Comments.jsx';
 import { Box, Divider, Card, CardActionArea, CardMedia, CardContent, CardActions, Typography, withStyles, Button } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import styles from '../Style/Style.jsx';
-import EditIcon from '@material-ui/icons/Edit';
 
 class Snippet_Page extends Component {
     state = '';
@@ -17,7 +16,7 @@ class Snippet_Page extends Component {
 
     componentDidMount = () => {
         // console.log('History is', this.props.history);
-        console.log('YOU ARE ON SNIPPET:',this.props.match.params);
+        console.log(this.props.match.params.id);
         this.props.dispatch({ type: 'FETCH_SNIPPET', payload: this.props.match.params.id });
     }
 
@@ -45,7 +44,7 @@ class Snippet_Page extends Component {
                                 /></Box>
                                 <CardContent>
                                     <Typography className={classes.cursive} gutterBottom variant="h5" component="h2">
-                                        {snippet.snip_title} {this.props.user.admin && <Button variant="contained" color="secondary" className={classes.spicy_edit}><EditIcon /></Button>}
+                                        {snippet.snip_title}
                                     </Typography>
                                     <Typography className={classes.cursive} variant="body2" color="textSecondary" component="p">
                                         {snippet.snip_description} 
@@ -59,18 +58,16 @@ class Snippet_Page extends Component {
                                 </CardContent>
                             </CardActionArea>
                             <CardActions>
+                                
                                 {snippet.snip_ending === false && <>
                                 {this.props.child.map(child =>
                                     <div key={child.id}>
                                         <Button className={classes.spicy} size="small" variant="contained" color="secondary" onClick={(event) => this.handleClick(child, event)}>{child.action}</Button><p />
                                     </div>
+
                                 )}</>}
-                            </CardActions>
 
-                            <CardActions>
-                                {/* {this.props.user.admin && <Button variant="contained" color="secondary" className={classes.spicy_edit}><EditIcon/></Button>} */}
                             </CardActions>
-
                         </Card>
 
                         {snippet.snip_ending &&

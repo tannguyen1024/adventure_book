@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Box, Card, CardActionArea, CardMedia, CardContent, CardActions, Typography, withStyles, Button } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import styles from '../Style/Style'
+import styles from '../Style/Style';
+import EditIcon from '@material-ui/icons/Edit';
 
 class Story_Select extends Component {
     componentDidMount() {
@@ -30,7 +31,7 @@ class Story_Select extends Component {
                             /></Box>
                             <CardContent>
                                 <Typography className={classes.cursive} gutterBottom variant="h5" component="h2">
-                                    {snippet.snip_title}
+                                    {snippet.snip_title} {this.props.user.admin && <Button variant="contained" color="secondary" className={classes.spicy_edit}><EditIcon /></Button>}
                                 </Typography>
                                 <Typography className={classes.cursive} variant="body2" color="textSecondary" component="p">
                                     {snippet.snip_description}
@@ -57,7 +58,7 @@ Story_Select.propTypes = { classes: PropTypes.object.isRequired };
 const mapStateToProps = reduxState => ({
     story: reduxState.story,
     user: reduxState.user,
-    snippet: reduxState.currentStory,
+    snippet: reduxState.firstSnippet,
     child: reduxState.firstSnippetChild
 });
 

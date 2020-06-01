@@ -4,7 +4,7 @@ import loginMode from './loginModeReducer';
 import user from './userReducer';
 import userAll from './userAllReducer';
 import story from './storyReducer';
-import currentStory from './storeStoryReducer';
+import firstSnippet from './storeStoryReducer';
 import firstSnippetChild from './firstSnippetReducer';
 import snippet from './snippetReducer';
 import snippetChild from './snippetChildReducer';
@@ -24,7 +24,7 @@ const rootReducer = combineReducers({
   user, // will have an id and username if someone is logged in
   userAll, // Shows ALL users
   story, // Shows ALL stories
-  currentStory, // Shows CURRENT story.
+  firstSnippet, // Shows CURRENT story.
   firstSnippetChild, // Shows CURRENT story's child
   snippet, // Shows current snippet info
   snippetChild, // Shows current snippet's children 

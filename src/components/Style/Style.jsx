@@ -10,6 +10,7 @@ const styles = {
         backgroundColor: 'rgba(222, 222, 222, 0.1)',
         marginLeft: '25px',
         marginTop: '25px',
+        position: 'relative',
     },
     media: {
         width: 600,
@@ -63,7 +64,7 @@ const styles = {
         background: '#076585',  /* fallback for old browsers */
         // background: linear-gradient(to left, #fff, #076585), /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
         // background: 'rgb(63, 105, 251)',
-        background: 'linear-gradient(200deg, #606c88, #3f4c6b)',
+        background: 'linear-gradient(200deg, #657394, #3f4c6b)',
         border: 0,
         // borderRadius: 3,
         color: 'white',
@@ -98,6 +99,29 @@ const styles = {
         display: 'inline-block', //Typically a button wouldn't need its own line        
         margin: '0 auto',
         width: '200px', //or whatever
+        '&:hover': {
+            backgroundColor: 'linear-gradient(200deg, #6b7896, #4c5b7d)',
+            boxShadow: '2px 2px 18px black',
+        }
+    },
+    spicy_edit: {
+        fontFamily: 'Indie Flower',
+        background: '#076585',  /* fallback for old browsers */
+        background: 'linear-gradient(200deg, #8a2b2b, #3a1212)',
+        border: 0,
+        // borderRadius: 3,
+        color: 'white',
+        boxShadow: '2px 2px 8px black',
+        height: 30,
+        // padding: '0 30px',
+        type: 'dark',
+        margin: '0 auto',
+        // textAlign: 'right',
+        // alignSelf: 'right',
+        // position: 'absolute',
+        primary: { main: "#e91e63", contrastText: "#fff" },
+        secondary: { main: "#03a9f4", contrastText: "#fff" },
+        transition: 'all 0.5s',
         '&:hover': {
             backgroundColor: 'linear-gradient(200deg, #6b7896, #4c5b7d)',
             boxShadow: '2px 2px 18px black',

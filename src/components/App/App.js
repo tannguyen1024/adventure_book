@@ -14,6 +14,7 @@ import Snippet_Page from '../Snippet_Page/Snippet_Page.jsx';
 import Admin_Create_Story from '../Admin_Create_Story/Admin_Create_Story.jsx';
 import Admin_Comments from '../Admin_Comments/Admin_Comments';
 import Admin_Edit_Story from '../Admin_Edit_Story/Admin_Edit_Story';
+import Admin_Edit_Snippet from '../Admin_Edit_Snippet/Admin_Edit_Snippet';
 // import { createMuiTheme, makeStyles, ThemeProvider} from '@material-ui/core/styles';
 
 import './App.css';
@@ -50,6 +51,7 @@ class App extends Component {
             <ProtectedRoute exact path="/story/edit/:id" component={Admin_Edit_Story} />
             <ProtectedRoute exact path="/story/:id" component={Story_Select} />
             <ProtectedRoute path="/snippet/:id" component={Snippet_Page} />
+            <ProtectedRoute exact path="/snippet/edit/:id" component={Admin_Edit_Snippet} />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
 
