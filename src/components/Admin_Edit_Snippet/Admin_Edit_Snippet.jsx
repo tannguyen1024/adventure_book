@@ -23,21 +23,22 @@ class Snippet_Page extends Component {
     }
 
     componentDidMount = () => {
-        // console.log('History is', this.props.history);
-        console.log(this.props.match.params.id);
         this.props.dispatch({ type: 'FETCH_SNIPPET', payload: this.props.match.params.id });
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (this.props.snippet.id !== prevProps.snippet.id) {
+        console.log('-----------------CURRENT PROP IS:', this.props.snippetEdit.id, 'prevPROP IS', prevProps.snippetEdit.id);
+        // console.log('-----------------CURRENT PROP IS:', this.props.snippet.id, 'prevPROP IS', prevProps.snippet.id)
+        if (this.props.snippetEdit.id !== prevProps.snippetEdit.id) {
             console.log('This is a NEW STORY')
+            // this.props.dispatch({ type: 'FETCH_SNIPPET', payload: this.props.match.params.id })
             this.setState({
-                id: this.props.snippet.id,
-                snip_title: this.props.snippet.snip_title,
-                snip_description: this.props.snippet.snip_description,
-                snip_path: this.props.snippet.snip_path,
-                snip_ending: String(this.props.snippet.snip_ending),
-                story_id: this.props.snippet.story_id,
+                id: this.props.snippetEdit.id,
+                snip_title: this.props.snippetEdit.snip_title,
+                snip_description: this.props.snippetEdit.snip_description,
+                snip_path: this.props.snippetEdit.snip_path,
+                snip_ending: String(this.props.snippetEdit.snip_ending),
+                story_id: this.props.snippetEdit.story_id,
             })
         }
     }
@@ -53,7 +54,8 @@ class Snippet_Page extends Component {
     }
     handleSubmit = () => {
         console.log('SUBMIT:', this.state)
-    }
+        this.props.history.push(`/snippet/${this.props.match.params.id}`)
+      }
 
     endingChange = (event) => {
         this.setState({ snip_ending: event.target.value })
@@ -74,7 +76,7 @@ class Snippet_Page extends Component {
                             <CardMedia
                                 className={classes.media}
                                 image={this.state.snip_path}
-                                title={this.props.snippet.snip_description} />
+                                title={this.props.snippetEdit.snip_description} />
                         </Box>
                         <CardContent>
                             <Typography className={classes.cursive} gutterBottom variant="h5" component="h2">
@@ -122,7 +124,7 @@ class Snippet_Page extends Component {
                         <Typography className={classes.cursive} variant="body2" color="textSecondary" component="div">
                             <label>Action Name: </label>
                             <Input multiline fullWidth placeholder="Insert a new action">
-                                </Input> <Button onClick={this.connectionAdd} className={classes.spicy_connection} variant="contained" color="secondary">
+                                </Input><br/><Button onClick={this.connectionAdd} className={classes.spicy_connection} variant="contained" color="secondary">
                                 Add Connection
                         </Button>
                         </Typography>
@@ -134,7 +136,7 @@ class Snippet_Page extends Component {
                     <Divider/>
                 </CardContent>
                 <CardContent> {/* Conditionally renders if ending is true or false */}
-                {this.props.snippet.snip_ending === false && <>
+                {this.props.snippetEdit.snip_ending === false && <>
                     {this.props.child.map(child =>
                         <div key={child.id}>
                             <Button className={classes.spicy} size="small" variant="contained" color="secondary" onClick={(event) => this.handleClick(child, event)}>{child.action}</Button><p />
@@ -144,7 +146,7 @@ class Snippet_Page extends Component {
                     </CardContent>
                 </Card>}
 
-                {/* {this.props.snippet.snip_ending &&
+                {/* {this.props.snippetEdit.snip_ending &&
                     <> <br /><Divider /><br /><Comments id={this.props.match.params.id} /> </>} */}
 
 
@@ -160,6 +162,7 @@ const mapStateToProps = reduxState => ({
     story: reduxState.story,
     user: reduxState.user,
     snippet: reduxState.snippet,
+    snippetEdit: reduxState.snippetEdit,
     child: reduxState.snippetChild
 });
 

@@ -7,6 +7,7 @@ import story from './storyReducer';
 import firstSnippet from './storeStoryReducer';
 import firstSnippetChild from './firstSnippetReducer';
 import snippet from './snippetReducer';
+import snippetEdit from './snippetEditReducer';
 import snippetChild from './snippetChildReducer';
 import oneComment from './oneCommentReducer';
 import allComment from './commentReducer';
@@ -27,6 +28,7 @@ const rootReducer = combineReducers({
   firstSnippet, // Shows CURRENT story.
   firstSnippetChild, // Shows CURRENT story's child
   snippet, // Shows current snippet info
+  snippetEdit, // Used by edit page
   snippetChild, // Shows current snippet's children 
   oneComment, // Shows current snippet's comment
   allComment, // Shows all comments

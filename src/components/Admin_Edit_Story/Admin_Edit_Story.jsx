@@ -15,7 +15,7 @@ class Admin_Create_Story extends Component {
 
     componentDidUpdate(prevProps) {
         // Whenever our reducer changes, this performs an update on our state.
-        console.log('-----------------CURRENT PROP IS:', this.props.editStory.id, 'prevPROP IS', prevProps.editStory.id)
+        // console.log('-----------------CURRENT PROP IS:', this.props.editStory.id, 'prevPROP IS', prevProps.editStory.id);
         if (this.props.editStory.id !== prevProps.editStory.id) {
             console.log('This is a NEW STORY')
             this.setState({
@@ -25,14 +25,6 @@ class Admin_Create_Story extends Component {
                 story_path: this.props.editStory.story_path
             })
         }
-        // else {
-        //     this.setState({
-        //         story_id: this.props.editStory.id,
-        //         story_title: this.props.editStory.story_title,
-        //         story_description: this.props.editStory.story_description,
-        //         story_path: this.props.editStory.story_path
-        //     })
-        // }
     }
 
     handleChangeTitle = (event) => {
