@@ -10,70 +10,61 @@ class Comments extends Component {
 
     componentDidMount = () => {
         // console.log('History is', this.props.history);
-        console.log('id is currently:',this.props.id);
-        this.props.dispatch({type:'FETCH_ONE_COMMENT', payload: this.props.id})
+        console.log('id is currently:', this.props.id);
+        this.props.dispatch({ type: 'FETCH_ONE_COMMENT', payload: this.props.id })
     }
 
     handleChange = (event) => {
         console.log(event.target.value)
-        this.setState({comment: event.target.value})
+        this.setState({ comment: event.target.value })
     }
 
     handleClick = () => {
         console.log(this.state)
-        this.props.dispatch({type:'POST_COMMENT', payload: this.state})
+        this.props.dispatch({ type: 'POST_COMMENT', payload: this.state })
     }
 
-    render(){
-    const { classes } = this.props;
+    render() {
+        const { classes } = this.props;
 
-        return(
+        return (
             <>
                 <Paper className={classes.paper}>
-                <Grid container wrap="nowrap" spacing={2}>
-                    <Grid item>
-                            <Chip variant="outlined" label={ this.props.user.username } className={classes.chip} />
+                    <Grid container wrap="nowrap" spacing={2}>
+                        <Grid item>
+                            <Chip variant="outlined" label={this.props.user.username} className={classes.chip} />
+                        </Grid>
+                        <Grid item xs>
+                            <TextField onChange={this.handleChange} multiline fullWidth={true} placeholder="How was it?"></TextField>
+                        </Grid>
+                        <Grid item xs>
+                            <Button onClick={this.handleClick} className={classes.spicy}>Leave Feedback</Button>
+                        </Grid>
                     </Grid>
-                    <Grid item xs>
-                        <TextField onChange={this.handleChange} multiline fullWidth={true} placeholder="How was it?"></TextField>
-                    </Grid>
-                    <Grid item xs>
-                        <Button onClick={this.handleClick} className={classes.spicy}>Leave Feedback</Button>
-                    </Grid>
-                </Grid>
                 </Paper>
 
-                {this.props.comment.map(comment => 
-                
-                {
+                {this.props.comment.map(comment => {
                     let date = moment(comment.comment_date).format(`MMM Do YYYY hh:mm A`);
-                    return(
-                
-                <div key={comment.comment}>
-                    <Paper className={classes.paper}>
-                        <Grid container wrap="nowrap" spacing={2}>
-                            <Grid item>
-                                <Chip variant="outlined" label={comment.username} className={classes.chip} />
-                            </Grid>
-                            <Grid item xs>
-                                <Typography className={classes.cursive}>{comment.comment}</Typography>
-                            </Grid>
-                            <Grid item xs>
-                                <Typography className={classes.cursive}>
-                                    {date}
-
-                                    {/* {
-                                    let formatDate = new Date(comment.comment_date).toLocaleString(); 
-                                    return {formatDate};
-                                    } */}
-                                </Typography>
-                            </Grid>
-                        </Grid>
-                    </Paper>
-                
-                </div>)}
+                    return (
+                        <div key={comment.comment}>
+                            <Paper className={classes.paper}>
+                                <Grid container wrap="nowrap" spacing={2}>
+                                    <Grid item>
+                                        <Chip variant="outlined" label={comment.username} className={classes.chip} />
+                                    </Grid>
+                                    <Grid item xs>
+                                        <Typography className={classes.cursive}>{comment.comment}</Typography>
+                                    </Grid>
+                                    <Grid item xs>
+                                        <Typography className={classes.cursive}>
+                                            {date}
+                                        </Typography>
+                                    </Grid>
+                                </Grid>
+                            </Paper>
+                        </div>)
+                }
                 )}
-
             </>
         )
     }

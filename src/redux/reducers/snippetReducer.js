@@ -1,7 +1,7 @@
 const snippet = (state = [], action) => {
     switch (action.type) {
         case 'SET_SNIPPET':
-            return action.payload;
+            return action.payload[0];
         default:
             return state;
     }

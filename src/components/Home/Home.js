@@ -61,7 +61,9 @@ class Home extends Component {
               /></Box>
               <CardContent>
                 <Typography className={classes.cursive} gutterBottom variant="h5" component="h2">
-                  {story.story_title} {admin && <IconButton className={classes.spicy_edit} onClick={(event) => this.editClick(event, story)}><EditIcon /></IconButton>}
+                  {story.story_title} 
+                  {admin && <IconButton className={classes.spicy_edit} onClick={(event) => this.editClick(event, story)}><EditIcon /></IconButton>}
+                  {/* The line above causes a warning in Inspect Tool */}
                 </Typography>
                 <Typography className={classes.cursive} variant="body2" color="textSecondary" component="p">
                   {story.story_description}

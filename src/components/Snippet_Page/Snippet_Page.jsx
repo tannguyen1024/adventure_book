@@ -32,24 +32,24 @@ class Snippet_Page extends Component {
 
         return (
             <>
-                {this.props.snippet.map(snippet =>
-                    <div key={snippet.id}>
+                
+                    
                         <Card className={classes.snippet}>
                             <CardActionArea>
                                 <Box boxShadow={3}><CardMedia
                                     className={classes.media}
-                                    image={snippet.snip_path}
-                                    title={snippet.snip_description}
+                                    image={this.props.snippet.snip_path}
+                                    title={this.props.snippet.snip_description}
                                 /></Box>
                                 <CardContent>
                                     <Typography className={classes.cursive} gutterBottom variant="h5" component="h2">
-                                        {snippet.snip_title} {this.props.user.admin && <IconButton onClick={() => this.props.history.push(`/snippet_edit/${this.props.match.params.id}`)} className={classes.spicy_edit}><EditIcon /></IconButton>}
+                                        {this.props.snippet.snip_title} {this.props.user.admin && <IconButton onClick={() => this.props.history.push(`/snippet_edit/${this.props.match.params.id}`)} className={classes.spicy_edit}><EditIcon /></IconButton>}
                                     </Typography>
                                     <Typography className={classes.cursive} variant="body2" color="textSecondary" component="p">
-                                        {snippet.snip_description} 
+                                        {this.props.snippet.snip_description} 
                                     </Typography>
                                     <Typography className={classes.ending}>
-                                    {snippet.snip_ending &&
+                                    {this.props.snippet.snip_ending &&
                                         <>
                                             The End.
                                             </>
@@ -57,7 +57,7 @@ class Snippet_Page extends Component {
                                 </CardContent>
                             </CardActionArea>
                             <CardActions>
-                                {snippet.snip_ending === false && <>
+                                {this.props.snippet.snip_ending === false && <>
                                 {this.props.child.map(child =>
                                     <div key={child.id}>
                                         <Button className={classes.spicy} size="small" variant="contained" color="secondary" onClick={(event) => this.handleClick(child, event)}>{child.action}</Button><p />
@@ -71,11 +71,11 @@ class Snippet_Page extends Component {
 
                         </Card>
 
-                        {snippet.snip_ending &&
+                        {this.props.snippet.snip_ending &&
                             <> <br /><Divider /><br /><Comments id={this.props.match.params.id}/> </>}
 
-                    </div>
-                )}
+                    
+                
             </>
         )
     }

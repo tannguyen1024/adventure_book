@@ -122,6 +122,24 @@ const styles = {
             boxShadow: '2px 2px 18px black',
         }
     },
+    spicy_connection: {
+        fontFamily: 'Indie Flower',
+        background: '#076585',  /* fallback for old browsers */
+        background: 'linear-gradient(200deg, #8a2b2b, #3a1212)',
+        border: 0,
+        color: 'white',
+        boxShadow: '2px 2px 8px black',
+        height: 30,
+        type: 'light',
+        margin: '0 auto',
+        primary: { main: "#e91e63", contrastText: "#fff" },
+        secondary: { main: "#03a9f4", contrastText: "#fff" },
+        transition: 'all 0.5s',
+        '&:hover': {
+            backgroundColor: 'linear-gradient(200deg, #6b7896, #4c5b7d)',
+            boxShadow: '2px 2px 18px black',
+        }
+    },
     cursive: {
         fontFamily: 'Courgette', 
     },
