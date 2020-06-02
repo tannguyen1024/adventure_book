@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 // import { Link } from 'react-router-dom';
 // import LogOutButton from '../LogOutButton/LogOutButton';
 /* IMPORTS HERE */
-import { Box, Card, CardActionArea, CardMedia, CardContent, CardActions, Typography, withStyles, Button } from '@material-ui/core';
+import { IconButton, Box, Card, CardActionArea, CardMedia, CardContent, CardActions, Typography, withStyles, Button } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
 import EditIcon from '@material-ui/icons/Edit';
@@ -61,7 +61,7 @@ class Home extends Component {
               /></Box>
               <CardContent>
                 <Typography className={classes.cursive} gutterBottom variant="h5" component="h2">
-                  {story.story_title} {admin && <Button className={classes.spicy_edit} variant="contained" color="secondary" onClick={(event) => this.editClick(event, story)}><EditIcon /></Button>}
+                  {story.story_title} {admin && <IconButton className={classes.spicy_edit} onClick={(event) => this.editClick(event, story)}><EditIcon /></IconButton>}
                 </Typography>
                 <Typography className={classes.cursive} variant="body2" color="textSecondary" component="p">
                   {story.story_description}

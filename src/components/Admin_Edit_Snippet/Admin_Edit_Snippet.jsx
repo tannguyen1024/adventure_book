@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Comments from '../Comments/Comments.jsx';
-import { Box, Divider, Card, CardActionArea, CardMedia, CardContent, CardActions, Typography, withStyles, Button } from '@material-ui/core';
+import { Input, TextField, Box, Divider, Card, CardActionArea, CardMedia, CardContent, CardActions, Typography, withStyles, Button } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import styles from '../Style/Style.jsx';
 
 class Snippet_Page extends Component {
-    state = '';
+    state = {id: this.props.match.params.id, snip_title: '', snip_description: '', snip_ending: '', snip_path: '', story_id: ''};
 
     handleClick = (child, event) => {
         this.props.history.push(`/snippet/${child.child}`);
@@ -21,12 +21,17 @@ class Snippet_Page extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (this.props.match.params.id !== prevProps.match.params.id) {
-            this.setState({ id: this.props.match.params.id });
-            window.location.reload();
-            // this.getData(this.props.match.params.id);
-            // or any other logic..
-        }
+        // if (this.props.editStory.id !== prevProps.editStory.id) {
+            // console.log('This is a NEW STORY')
+            // this.setState({
+            //     id: this.props.editStory.id,
+            //     snip_title: this.props.editStory.story_title,
+            //     snip_description: this.props.editStory.story_description,
+            //     snip_path: this.props.editStory.story_path,
+            //     snip_ending: this.props.editStory.story_path,
+            //     story_id: '',
+            // })
+        // }
     }
     render() {
         const { classes } = this.props;
@@ -37,41 +42,45 @@ class Snippet_Page extends Component {
                     <div key={snippet.id}>
                         <Card className={classes.snippet}>
                             <CardActionArea>
-                                <Box boxShadow={3}><CardMedia
-                                    className={classes.media}
-                                    image={snippet.snip_path}
-                                    title={snippet.snip_description}
-                                /></Box>
+                                <Box boxShadow={3}>
+                                    <CardMedia
+                                        className={classes.media}
+                                        image={snippet.snip_path}
+                                        title={snippet.snip_description} />
+                                </Box>
                                 <CardContent>
                                     <Typography className={classes.cursive} gutterBottom variant="h5" component="h2">
-                                        {snippet.snip_title}
+                                        <label>Title: </label><Input value={snippet.snip_title} multiline placeholder="Title goes here."></Input>
                                     </Typography>
                                     <Typography className={classes.cursive} variant="body2" color="textSecondary" component="p">
-                                        {snippet.snip_description} 
+                                        <label>Description: </label><TextField value={snippet.snip_description} color="secondary" multiline fullWidth={true} placeholder="Insert description here."></TextField>
+                                    </Typography>
+                                    <Typography className={classes.cursive} variant="body2" color="textSecondary" component="div">
+                                        <label>Image URL: </label><TextField color="secondary" value={snippet.snip_path} multiline fullWidth={true} placeholder="Insert path to image here.  Example: http://address.com/picture.png" />
                                     </Typography>
                                     <Typography className={classes.ending}>
-                                    {snippet.snip_ending &&
-                                        <>
-                                            The End.
+                                        {snippet.snip_ending &&
+                                            <>
+                                                The End.
                                             </>
                                         }</Typography>
                                 </CardContent>
                             </CardActionArea>
                             <CardActions>
-                                
-                                {snippet.snip_ending === false && <>
-                                {this.props.child.map(child =>
-                                    <div key={child.id}>
-                                        <Button className={classes.spicy} size="small" variant="contained" color="secondary" onClick={(event) => this.handleClick(child, event)}>{child.action}</Button><p />
-                                    </div>
 
-                                )}</>}
+                                {snippet.snip_ending === false && <>
+                                    {this.props.child.map(child =>
+                                        <div key={child.id}>
+                                            <Button className={classes.spicy} size="small" variant="contained" color="secondary" onClick={(event) => this.handleClick(child, event)}>{child.action}</Button><p />
+                                        </div>
+
+                                    )}</>}
 
                             </CardActions>
                         </Card>
 
                         {snippet.snip_ending &&
-                            <> <br /><Divider /><br /><Comments id={this.props.match.params.id}/> </>}
+                            <> <br /><Divider /><br /><Comments id={this.props.match.params.id} /> </>}
 
                     </div>
                 )}

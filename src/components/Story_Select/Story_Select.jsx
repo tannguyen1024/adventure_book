@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Box, Card, CardActionArea, CardMedia, CardContent, CardActions, Typography, withStyles, Button } from '@material-ui/core';
+import { IconButton, Box, Card, CardActionArea, CardMedia, CardContent, CardActions, Typography, withStyles, Button } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
 import EditIcon from '@material-ui/icons/Edit';
@@ -31,7 +31,7 @@ class Story_Select extends Component {
                             /></Box>
                             <CardContent>
                                 <Typography className={classes.cursive} gutterBottom variant="h5" component="h2">
-                                    {snippet.snip_title} {this.props.user.admin && <Button variant="contained" color="secondary" className={classes.spicy_edit}><EditIcon /></Button>}
+                                    {snippet.snip_title} {this.props.user.admin && <IconButton onClick={()=>this.props.history.push(`/snippet_edit/${this.props.child[0].parent}`)} className={classes.spicy_edit}><EditIcon /></IconButton>}
                                 </Typography>
                                 <Typography className={classes.cursive} variant="body2" color="textSecondary" component="p">
                                     {snippet.snip_description}

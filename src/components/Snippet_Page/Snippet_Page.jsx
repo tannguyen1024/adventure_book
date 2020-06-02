@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Comments from '../Comments/Comments.jsx';
-import { Box, Divider, Card, CardActionArea, CardMedia, CardContent, CardActions, Typography, withStyles, Button } from '@material-ui/core';
+import { IconButton, Box, Divider, Card, CardActionArea, CardMedia, CardContent, CardActions, Typography, withStyles, Button } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import styles from '../Style/Style.jsx';
 import EditIcon from '@material-ui/icons/Edit';
@@ -25,8 +25,6 @@ class Snippet_Page extends Component {
         if (this.props.match.params.id !== prevProps.match.params.id) {
             this.setState({ id: this.props.match.params.id });
             window.location.reload();
-            // this.getData(this.props.match.params.id);
-            // or any other logic..
         }
     }
     render() {
@@ -45,7 +43,7 @@ class Snippet_Page extends Component {
                                 /></Box>
                                 <CardContent>
                                     <Typography className={classes.cursive} gutterBottom variant="h5" component="h2">
-                                        {snippet.snip_title} {this.props.user.admin && <Button variant="contained" color="secondary" className={classes.spicy_edit}><EditIcon /></Button>}
+                                        {snippet.snip_title} {this.props.user.admin && <IconButton onClick={() => this.props.history.push(`/snippet_edit/${this.props.match.params.id}`)} className={classes.spicy_edit}><EditIcon /></IconButton>}
                                     </Typography>
                                     <Typography className={classes.cursive} variant="body2" color="textSecondary" component="p">
                                         {snippet.snip_description} 

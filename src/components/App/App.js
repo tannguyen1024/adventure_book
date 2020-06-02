@@ -51,7 +51,7 @@ class App extends Component {
             <ProtectedRoute exact path="/story/edit/:id" component={Admin_Edit_Story} />
             <ProtectedRoute exact path="/story/:id" component={Story_Select} />
             <ProtectedRoute path="/snippet/:id" component={Snippet_Page} />
-            <ProtectedRoute exact path="/snippet/edit/:id" component={Admin_Edit_Snippet} />
+            <ProtectedRoute exact path="/snippet_edit/:id" component={Admin_Edit_Snippet} />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
 
