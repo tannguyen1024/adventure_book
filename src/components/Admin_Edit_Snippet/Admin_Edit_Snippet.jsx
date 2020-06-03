@@ -7,11 +7,11 @@ import styles from '../Style/Style.jsx';
 
 /* Radio MUI */
 import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormLabel from '@material-ui/core/FormLabel';
+// import RadioGroup from '@material-ui/core/RadioGroup';
+// import FormControlLabel from '@material-ui/core/FormControlLabel';
+// import FormControl from '@material-ui/core/FormControl';
+// import FormHelperText from '@material-ui/core/FormHelperText';
+// import FormLabel from '@material-ui/core/FormLabel';
 
 class Snippet_Page extends Component {
     state = { id: this.props.match.params.id, snip_title: '', snip_description: '', snip_ending: '', snip_path: '', story_id: '', action: '', };
