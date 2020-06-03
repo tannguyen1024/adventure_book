@@ -14,7 +14,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormLabel from '@material-ui/core/FormLabel';
 
 class Snippet_Page extends Component {
-    state = { id: this.props.match.params.id, snip_title: '', snip_description: '', snip_ending: '', snip_path: '', story_id: '' };
+    state = { id: this.props.match.params.id, snip_title: '', snip_description: '', snip_ending: '', snip_path: '', story_id: '', action: '', };
 
     handleClick = (child, event) => {
         this.props.history.push(`/snippet/${child.child}`);
@@ -53,6 +53,7 @@ class Snippet_Page extends Component {
         this.setState({ snip_path: event.target.value })
     }
     handleSubmit = () => {
+        this.props.dispatch({type: 'UPDATE_SNIPPET', payload: this.state})
         console.log('SUBMIT:', this.state)
         this.props.history.push(`/snippet/${this.props.match.params.id}`)
       }
@@ -62,14 +63,25 @@ class Snippet_Page extends Component {
     };
 
 
+    handleChangeAction = (event) => {
+        this.setState({ action: event.target.value })
+    }
+
+    handleClickAction = () => {
+        if(this.state.action===''){
+            alert('Please enter an action before submitting.'); return};
+        console.log('Submitting:', this.state.action);
+        this.props.dispatch({type: 'NEW_ACTION', payload: this.state});
+        // window.location.reload();
+    }
+
+
     render() {
         let selectedValue = String(this.state.snip_ending);
         const { classes } = this.props;
-        console.log('STATE IS CURRENTLY:', this.state)
+        // console.log('STATE IS CURRENTLY:', this.state)
         return (
             <>
-
-
                 <Card className={classes.snippet}>
                     <CardActionArea>
                         <Box boxShadow={3}>
@@ -119,19 +131,19 @@ class Snippet_Page extends Component {
                 <Card className={classes.snippet}>
                 <CardContent>
                         <Typography className={classes.cursive} gutterBottom variant="h5" component="h2">
-                            Connection Manager
+                            Action Manager
                         </Typography>
                         <Typography className={classes.cursive} variant="body2" color="textSecondary" component="div">
                             <label>Action Name: </label>
-                            <Input multiline fullWidth placeholder="Insert a new action">
-                                </Input><br/><Button onClick={this.connectionAdd} className={classes.spicy_connection} variant="contained" color="secondary">
-                                Add Connection
+                            <TextField inputProps={{ maxLength: 30 }} onChange={this.handleChangeAction} multiline placeholder="Insert a new action">
+                            </TextField><br /><Button onClick={this.handleClickAction} className={classes.spicy_connection} variant="contained" color="secondary">
+                                Add Action
                         </Button>
                         </Typography>
                 </CardContent>
                 <CardContent>
                     <Typography className={classes.cursive} variant="body2" color="textSecondary" component="div">
-                        Current Connections:
+                        Current Actions:
                     </Typography>
                     <Divider/>
                 </CardContent>
@@ -139,18 +151,14 @@ class Snippet_Page extends Component {
                 {this.props.snippetEdit.snip_ending === false && <>
                     {this.props.child.map(child =>
                         <div key={child.id}>
-                            <Button className={classes.spicy} size="small" variant="contained" color="secondary" onClick={(event) => this.handleClick(child, event)}>{child.action}</Button><p />
+                            <Button className={classes.spicy} size="small" variant="contained" color="secondary" onClick={(event) => this.handleClick(child, event)}>{child.action}</Button> <p />
                         </div>
 
                     )}</>}
                     </CardContent>
                 </Card>}
-
                 {/* {this.props.snippetEdit.snip_ending &&
                     <> <br /><Divider /><br /><Comments id={this.props.match.params.id} /> </>} */}
-
-
-
             </>
         )
     }

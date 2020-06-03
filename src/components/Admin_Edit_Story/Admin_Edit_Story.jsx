@@ -6,7 +6,7 @@ import styles from '../Style/Style'
 
 class Admin_Create_Story extends Component {
 
-    state = { story_id: '', story_title: '', story_description: '', story_path: '', user_id: this.props.user.id }
+    state = { story_id: '', story_title: '', story_description: '', story_path: '', user_id: this.props.user.id}
 
     componentDidMount = () => {
         this.props.dispatch({ type: 'GET_EDIT_STORY', payload: this.props.match.params.id });

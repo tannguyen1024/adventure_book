@@ -52,13 +52,39 @@ router.post('/start/:id', (req, res) => {
   let storyId = req.params.id;
   let defaultTitle = 'Snippet Title';
   let defaultDescription = 'Adventurous Description';
-  const query = `INSERT INTO "snippet" (story_id, snip_title, snip_description) VALUES ($1, $2, $3);`;
+  const query = `INSERT INTO "snippet" (story_id, snip_title, snip_description) VALUES ($1, $2, $3) RETURNING id;`;
   pool.query(query, [storyId, defaultTitle, defaultDescription])
+    .then((result) => {
+      res.send(result.rows);
+    }).catch((error) => {
+      console.log(error)
+    })
+})
+
+router.post('/action/:id', (req, res) => {
+  let parent = req.body.id;
+  let child = req.params.id;
+  let action = req.body.action;
+  const query = `INSERT INTO "junction" (parent, child, action) VALUES ($1, $2, $3);`;
+  pool.query(query, [parent, child, action])
     .then((result) => {
       res.sendStatus(201);
     }).catch((error) => {
       console.log(error)
     })
+})
+
+router.put('/:id', (req, res) => {
+  const id = req.params.id;
+  const snippet = req.body;
+  console.log ('Received:',snippet)
+  const queryText = `UPDATE "snippet" SET snip_title=$1, snip_description=$2, snip_path=$3, snip_ending=$4 WHERE "snippet"."id" = $5;`;
+  pool.query(queryText, [snippet.snip_title, snippet.snip_description, snippet.snip_path, snippet.snip_ending, id]).then((result) => {
+    // console.log(result);
+    res.sendStatus(200);
+  }).catch((error) => {
+    console.log('An error occurred in PUT', error);
+  })
 })
 
 module.exports = router;
