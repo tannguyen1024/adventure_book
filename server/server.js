@@ -13,6 +13,7 @@ const userRouter = require('./routes/user.router');
 const storyRouter = require('./routes/story.router');
 const snippetRouter = require('./routes/snippet.router');
 const commentRouter = require('./routes/comment.router');
+const path = require('path'); /* Used for Heroku Import */
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -33,6 +34,10 @@ app.use('/api/comment', commentRouter);
 
 // Serve static files
 app.use(express.static('build'));
+// Adding for HEROKU - CATCH ALL -> Go here instead if above is not found.
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/client/build/index.html'));
+});
 
 // App Set //
 const PORT = process.env.PORT || 5000;
