@@ -48,7 +48,7 @@ class Admin_Create_Story extends Component {
                             </CardContent>
                         </CardActionArea>
                         <CardActions>
-                            <Button onClick={this.handleSubmit} className={classes.spicy} variant="contained" color="secondary">
+                            <Button onClick={this.handleSubmit} className={classes.spicy_submit} variant="contained" color="secondary">
                                 Submit your Story {/* Conditionally Renders Start or Edit button */}
                             </Button>
                         </CardActions>

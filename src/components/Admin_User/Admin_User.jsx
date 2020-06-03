@@ -45,7 +45,7 @@ class Admin_User extends Component {
 
                             </CardContent>
                             <CardActions>
-                                {user.admin ? '' : <Button onClick={(event) => this.handleClick(event, user.id)} className={classes.spicy} variant="contained" color="primary" size="small">Promote to Admin</Button>}
+                                {user.admin ? '' : <Button onClick={(event) => this.handleClick(event, user.id)} className={classes.spicy_submit} variant="contained" color="primary" size="small">Promote to Admin</Button>}
                             </CardActions>
                         </Card></div>)
                 }

@@ -16,6 +16,7 @@ import adminEditStory from './adminEditStorySaga';
 import storyUpdate from './storyUpdateSaga';
 import snippetUpdate from './snippetUpdateSaga';
 import actionCreate from './actionCreateSaga';
+import actionDelete from './actionDeleteSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -44,5 +45,6 @@ export default function* rootSaga() {
     storyUpdate(), // Edit one story
     snippetUpdate(), // Updates one snippet
     actionCreate(), // Creates one ACTION
+    actionDelete(), // DELETES ONE ACTION
   ]);
 }

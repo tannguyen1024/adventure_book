@@ -87,4 +87,30 @@ router.put('/:id', (req, res) => {
   })
 })
 
+// yield axios.delete(`/api/snippet/action/${action.payload.id}`);
+// yield axios.delete(`/api/snippet/delete/${action.payload.child}`);
+
+router.delete('/action/:id', (req, res) => {
+  let id = req.params.id;
+  const query = `DELETE FROM "junction" WHERE id=$1;`;
+  pool.query(query, [id])
+    .then((result) => {
+      res.sendStatus(200)
+    }).catch((error) => {
+      console.log('ERROR in DELETE ROUTE', error)
+    })
+})
+
+router.delete('/delete/:id', (req, res) => {
+  let id = req.params.id;
+  const query = `DELETE FROM "snippet" WHERE id=$1;`;
+  pool.query(query, [id])
+    .then((result) => {
+      res.sendStatus(200)
+    }).catch((error) => {
+      console.log('ERROR in DELETE ROUTE', error)
+    })
+})
+
+
 module.exports = router;

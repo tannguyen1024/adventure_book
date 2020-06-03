@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Comments from '../Comments/Comments.jsx';
-import { Input, TextField, Box, Divider, Card, CardActionArea, CardMedia, CardContent, CardActions, Typography, withStyles, Button } from '@material-ui/core';
+import { IconButton, Input, TextField, Box, Divider, Card, CardActionArea, CardMedia, CardContent, CardActions, Typography, withStyles, Button } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import styles from '../Style/Style.jsx';
+import DeleteForeverRoundedIcon from '@material-ui/icons/DeleteForeverRounded';
 
 /* Radio MUI */
 import Radio from '@material-ui/core/Radio';
@@ -50,21 +51,29 @@ class Snippet_Page extends Component {
         this.setState({ snip_description: event.target.value })
     }
     changePath = (event) => {
-        this.setState({ snip_path: event.target.value })
+        this.setState({ snip_path: event.target.value });
     }
+
     handleSubmit = () => {
-        this.props.dispatch({type: 'UPDATE_SNIPPET', payload: this.state})
-        console.log('SUBMIT:', this.state)
-        this.props.history.push(`/snippet/${this.props.match.params.id}`)
+        this.props.dispatch({type: 'UPDATE_SNIPPET', payload: this.state});
+        console.log('SUBMIT:', this.state);
+        this.props.history.push(`/snippet/${this.props.match.params.id}`);
       }
 
+    deleteAction = (event, child) => {
+        console.log('SUBMITTING FOR DELETION:', child);
+        this.props.dispatch({ type: 'DELETE_ACTION', payload: child});
+        this.setState({ state: this.state }); /* Used to re-render DOM */
+        this.props.dispatch({ type: 'FETCH_SNIPPET', payload: this.props.match.params.id });
+    }
+
     endingChange = (event) => {
-        this.setState({ snip_ending: event.target.value })
+        this.setState({ snip_ending: event.target.value });
     };
 
 
     handleChangeAction = (event) => {
-        this.setState({ action: event.target.value })
+        this.setState({ action: event.target.value });
     }
 
     handleClickAction = () => {
@@ -72,7 +81,8 @@ class Snippet_Page extends Component {
             alert('Please enter an action before submitting.'); return};
         console.log('Submitting:', this.state.action);
         this.props.dispatch({type: 'NEW_ACTION', payload: this.state});
-        // window.location.reload();
+        this.setState({ state: this.state }); /* Used to re-render DOM */
+        this.props.dispatch({ type: 'FETCH_SNIPPET', payload: this.props.match.params.id });
     }
 
 
@@ -120,7 +130,7 @@ class Snippet_Page extends Component {
                             
                         </CardContent>
                         <CardContent>
-                        <Button onClick={this.handleSubmit} className={classes.spicy} variant="contained" color="secondary">
+                        <Button onClick={this.handleSubmit} className={classes.spicy_submit} variant="contained" color="secondary">
                             Submit Changes
                         </Button>
                         </CardContent>
@@ -135,7 +145,7 @@ class Snippet_Page extends Component {
                         </Typography>
                         <Typography className={classes.cursive} variant="body2" color="textSecondary" component="div">
                             <label>Action Name: </label>
-                            <TextField inputProps={{ maxLength: 30 }} onChange={this.handleChangeAction} multiline placeholder="Insert a new action">
+                            <TextField inputProps={{ maxLength: 50 }} onChange={this.handleChangeAction} multiline placeholder="Insert a new action">
                             </TextField><br /><Button onClick={this.handleClickAction} className={classes.spicy_connection} variant="contained" color="secondary">
                                 Add Action
                         </Button>
@@ -151,7 +161,7 @@ class Snippet_Page extends Component {
                 {this.props.snippetEdit.snip_ending === false && <>
                     {this.props.child.map(child =>
                         <div key={child.id}>
-                            <Button className={classes.spicy} size="small" variant="contained" color="secondary" onClick={(event) => this.handleClick(child, event)}>{child.action}</Button> <p />
+                            <Button className={classes.spicy} size="small" variant="contained" color="secondary" onClick={(event) => this.handleClick(child, event)}>{child.action}</Button> <IconButton className={classes.spicy_edit} onClick={(event)=>this.deleteAction(event, child)}><DeleteForeverRoundedIcon /></IconButton><p />
                         </div>
 
                     )}</>}

@@ -82,10 +82,10 @@ const styles = {
     },
     spicy_middle: {
         fontFamily: 'Permanent Marker',
-        background: '#076585',  /* fallback for old browsers */
+        background: '#8a2b2b',  /* fallback for old browsers */
         // background: linear-gradient(to left, #fff, #076585), /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
         // background: 'rgb(63, 105, 251)',
-        background: 'linear-gradient(200deg, #606c88, #3f4c6b)',
+        background: 'linear-gradient(200deg, #8a2b2b, #3a1212)',
         border: 0,
         // borderRadius: 3,
         color: 'white',
@@ -123,7 +123,7 @@ const styles = {
         }
     },
     spicy_connection: {
-        fontFamily: 'Indie Flower',
+        fontFamily: 'Permanent Marker',
         background: '#076585',  /* fallback for old browsers */
         background: 'linear-gradient(200deg, #8a2b2b, #3a1212)',
         border: 0,
@@ -133,6 +133,25 @@ const styles = {
         type: 'light',
         // margin: '0 auto',
         marginTop: '15px',
+        primary: { main: "#e91e63", contrastText: "#fff" },
+        secondary: { main: "#03a9f4", contrastText: "#fff" },
+        transition: 'all 0.5s',
+        '&:hover': {
+            backgroundColor: 'linear-gradient(200deg, #6b7896, #4c5b7d)',
+            boxShadow: '2px 2px 18px black',
+        }
+    },
+    spicy_submit: {
+        fontFamily: 'Permanent Marker',
+        background: '#076585',  /* fallback for old browsers */
+        background: 'linear-gradient(200deg, #8a2b2b, #3a1212)',
+        border: 0,
+        color: 'white',
+        boxShadow: '2px 2px 8px black',
+        // height: 30,
+        type: 'light',
+        // margin: '0 auto',
+        // marginTop: '15px',
         primary: { main: "#e91e63", contrastText: "#fff" },
         secondary: { main: "#03a9f4", contrastText: "#fff" },
         transition: 'all 0.5s',
