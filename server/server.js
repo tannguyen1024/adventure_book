@@ -36,7 +36,7 @@ app.use('/api/comment', commentRouter);
 app.use(express.static('build'));
 // Adding for HEROKU - CATCH ALL -> Go here instead if above is not found.
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/client/build/index.html'));
+  res.sendFile(path.join(__dirname + '/build/index.html'));
 });
 
 // App Set //
