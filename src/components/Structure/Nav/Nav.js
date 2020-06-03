@@ -8,7 +8,7 @@ const Nav = (props) => (
   <div className="nav">
     <Link to="/home">
       <h2 className="nav-title">
-        <img src='../../logo_white.png' width="250" alt="Adventure Book" />
+        <img src='../../logo_white.png' width="200" alt="Adventure Book" />
       </h2>
     </Link>
     <div className="nav-right">
