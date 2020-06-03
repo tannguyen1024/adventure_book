@@ -162,6 +162,7 @@ const styles = {
     },
     cursive: {
         fontFamily: 'Courgette', 
+        // fontSize: 17,
     },
     cursive_middle: {
         textAlign: 'center',

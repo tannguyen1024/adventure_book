@@ -1,6 +1,7 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
 /* Displays Only Comments of One Snippet */
 router.get('/:id', (req, res) => {
@@ -28,7 +29,7 @@ ORDER BY comment_date DESC;`
     })
 });
 
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
     const query = `INSERT INTO "comment" (user_id, comment, snippet_id) VALUES ($1, $2, $3);`;
     pool.query(query, [req.body.user, req.body.comment, req.body.snippet])
         .then((result) => {
@@ -38,7 +39,7 @@ router.post('/', (req, res) => {
         })
 })
 
-router.delete('/:id', (req, res)=>{
+router.delete('/:id', rejectUnauthenticated, (req, res)=>{
     let id = req.params.id;
     const query = `DELETE FROM "comment" WHERE id=$1;`
     pool.query(query, [id])

@@ -1,4 +1,5 @@
 const express = require('express');
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 const pool = require('../modules/pool');
 const router = express.Router();
 
@@ -61,7 +62,7 @@ router.post('/start/:id', (req, res) => {
     })
 })
 
-router.post('/action/:id', (req, res) => {
+router.post('/action/:id', rejectUnauthenticated, (req, res) => {
   let parent = req.body.id;
   let child = req.params.id;
   let action = req.body.action;
@@ -90,7 +91,7 @@ router.put('/:id', (req, res) => {
 // yield axios.delete(`/api/snippet/action/${action.payload.id}`);
 // yield axios.delete(`/api/snippet/delete/${action.payload.child}`);
 
-router.delete('/action/:id', (req, res) => {
+router.delete('/action/:id', rejectUnauthenticated, (req, res) => {
   let id = req.params.id;
   const query = `DELETE FROM "junction" WHERE id=$1;`;
   pool.query(query, [id])
@@ -101,7 +102,7 @@ router.delete('/action/:id', (req, res) => {
     })
 })
 
-router.delete('/delete/:id', (req, res) => {
+router.delete('/delete/:id', rejectUnauthenticated, (req, res) => {
   let id = req.params.id;
   const query = `DELETE FROM "snippet" WHERE id=$1;`;
   pool.query(query, [id])

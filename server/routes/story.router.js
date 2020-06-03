@@ -1,6 +1,6 @@
 const express = require('express');
 const pool = require('../modules/pool');
-
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -38,7 +38,7 @@ router.get('/edit/:id', (req, res) => {
   })
 });
 
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
   const query = `INSERT INTO "story" (user_id, story_title, story_description, story_path) VALUES ($1, $2, $3, $4) RETURNING id;`;
   pool.query(query, [req.body.user_id, req.body.story_title, req.body.story_description, req.body.story_path])
     .then((result) => {
@@ -49,7 +49,7 @@ router.post('/', (req, res) => {
     })
 })
 
-router.put('/:id', (req, res) => {
+router.put('/:id', rejectUnauthenticated, (req, res) => {
   const id = req.params.id;
   const story = req.body;
   // console.log(story)

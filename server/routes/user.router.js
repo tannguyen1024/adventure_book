@@ -22,7 +22,7 @@ router.get('/all', (req, res) => {
   })
 });
 
-router.put('/update/:id', (req, res) => {
+router.put('/update/:id', rejectUnauthenticated, (req, res) => {
   console.log('Your ID is:',req.params.id)
   const id = req.params.id;
   const queryText = `UPDATE "user" SET admin=TRUE WHERE "user"."id" = $1`;
