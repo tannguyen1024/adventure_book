@@ -60,7 +60,7 @@ const styles = {
         maxWidth: 345,
     },
     spicy: {
-        fontFamily: 'Indie Flower',
+        fontFamily: 'Permanent Marker',
         background: '#076585',  /* fallback for old browsers */
         // background: linear-gradient(to left, #fff, #076585), /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
         // background: 'rgb(63, 105, 251)',
@@ -69,7 +69,7 @@ const styles = {
         // borderRadius: 3,
         color: 'white',
         boxShadow: '2px 2px 8px black',
-        height: 30,
+        // height: 30,
         // padding: '0 30px',
         type: 'dark',
         primary: { main: "#e91e63", contrastText: "#fff" },
@@ -81,7 +81,7 @@ const styles = {
         }
     },
     spicy_middle: {
-        fontFamily: 'Indie Flower',
+        fontFamily: 'Permanent Marker',
         background: '#076585',  /* fallback for old browsers */
         // background: linear-gradient(to left, #fff, #076585), /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
         // background: 'rgb(63, 105, 251)',
@@ -90,7 +90,7 @@ const styles = {
         // borderRadius: 3,
         color: 'white',
         boxShadow: '2px 2px 8px black',
-        height: 30,
+        // height: 30,
         // padding: '0 30px',
         type: 'dark',
         primary: { main: "#e91e63", contrastText: "#fff" },
@@ -105,7 +105,7 @@ const styles = {
         }
     },
     spicy_edit: {
-        fontFamily: 'Indie Flower',
+        fontFamily: 'Permanent Marker',
         // background: '#076585',  /* fallback for old browsers */
         // background: 'linear-gradient(200deg, #8a2b2b, #3a1212)',
         border: 0,
@@ -129,7 +129,7 @@ const styles = {
         border: 0,
         color: 'white',
         boxShadow: '2px 2px 8px black',
-        height: 30,
+        // height: 30,
         type: 'light',
         // margin: '0 auto',
         marginTop: '15px',
