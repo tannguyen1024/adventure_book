@@ -28,7 +28,7 @@ class Admin_Comments extends Component {
             cancelButtonColor: '#657394',
             confirmButtonText: 'YES, REMOVE IT',
             cancelButtonText: 'NO, KEEP IT',
-            background: '#fff url("https://cdn2.vectorstock.com/i/1000x1000/15/31/low-polygon-shapes-black-light-background-dark-vector-21691531.jpg")',
+            background: '#fff url("../../background5.jpg")',
         }).then((result) => {
             if (result.value) {
                 this.props.dispatch({ type: 'DELETE_COMMENT', payload: comment.comment_id })

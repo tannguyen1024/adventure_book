@@ -1,3 +1,4 @@
+import '../Style/Swal.scss';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Comments from '../Comments/Comments.jsx';
@@ -6,7 +7,6 @@ import PropTypes from 'prop-types';
 import styles from '../Style/Style.jsx';
 import DeleteForeverRoundedIcon from '@material-ui/icons/DeleteForeverRounded';
 import Swal from 'sweetalert2/src/sweetalert2.js';
-import '../Style/Swal.scss';
 
 /* Radio MUI */
 import Radio from '@material-ui/core/Radio';
@@ -77,7 +77,7 @@ class Snippet_Page extends Component {
             cancelButtonColor: '#657394',
             confirmButtonText: 'YES, REMOVE IT',
             cancelButtonText: 'NO, KEEP IT',
-            background: '#fff url("https://cdn2.vectorstock.com/i/1000x1000/15/31/low-polygon-shapes-black-light-background-dark-vector-21691531.jpg")',
+            background: '#fff url("../../background5.jpg")',
         }).then((result) => {
             if (result.value) {
                 this.props.dispatch({ type: 'DELETE_ACTION', payload: child });
