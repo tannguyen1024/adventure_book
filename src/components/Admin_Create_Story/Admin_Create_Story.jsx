@@ -2,10 +2,34 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Input, TextField, Box, Card, CardActionArea, CardMedia, CardContent, CardActions, Typography, withStyles, Button } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import styles from '../Style/Style'
+import styles from '../Style/Style';
+import Swal from 'sweetalert2/src/sweetalert2.js';
+import '../Style/Swal.scss';
 
 class Admin_Create_Story extends Component {
     state = { user_id: this.props.user.id, story_title: '', story_description: '', story_path: 'https://cdn.pixabay.com/photo/2017/07/22/11/46/adventure-2528477_1280.jpg'}
+
+    cancelClick = () => {
+        Swal.fire({
+            title: "Return to homepage",
+            text: 'and discard changes?',
+            imageUrl: 'https://cdn.pixabay.com/photo/2017/07/22/11/46/adventure-2528477_1280.jpg',
+            // imageWidth: 400,
+            imageHeight: 200,
+            imageAlt: 'Image of Snippet',
+            showCancelButton: true,
+            textColor: 'black',
+            confirmButtonColor: '#8a2b2b',
+            cancelButtonColor: '#657394',
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'No! Keep my work',
+            background: '#fff url("https://cdn2.vectorstock.com/i/1000x1000/15/31/low-polygon-shapes-black-light-background-dark-vector-21691531.jpg")',
+        }).then((result) => {
+            if (result.value) {
+                this.props.history.push('/home')
+            }
+        })
+    }
 
     handleTitle = (event) => {
         this.setState({story_title: event.target.value});
@@ -48,6 +72,9 @@ class Admin_Create_Story extends Component {
                             </CardContent>
                         </CardActionArea>
                         <CardActions>
+                            <Button onClick={this.cancelClick} className={classes.spicy_submit} variant="contained" color="secondary">
+                                Cancel
+                            </Button>
                             <Button onClick={this.handleSubmit} className={classes.spicy_submit} variant="contained" color="secondary">
                                 Submit your Story {/* Conditionally Renders Start or Edit button */}
                             </Button>
