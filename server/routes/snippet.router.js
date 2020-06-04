@@ -49,7 +49,7 @@ router.get('/child/:id', (req, res) => {
   })
 });
 
-router.post('/start/:id', (req, res) => {
+router.post('/start/:id', rejectUnauthenticated, (req, res) => {
   let storyId = req.params.id;
   let defaultTitle = 'Snippet Title';
   let defaultDescription = 'Adventurous Description';
@@ -75,7 +75,7 @@ router.post('/action/:id', rejectUnauthenticated, (req, res) => {
     })
 })
 
-router.put('/:id', (req, res) => {
+router.put('/:id', rejectUnauthenticated, (req, res) => {
   const id = req.params.id;
   const snippet = req.body;
   console.log ('Received:',snippet)
