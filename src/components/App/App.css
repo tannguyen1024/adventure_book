@@ -6,7 +6,7 @@
 body {
     background-image: url('../../images/background2.jpg');
     font-family: 'Courgette', cursive, 'Segoe UI', Tahoma;
-    margin: 0px;
+    margin: 10px;
 }
 
 .alert {
