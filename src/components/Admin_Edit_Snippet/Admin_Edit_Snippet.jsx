@@ -5,6 +5,8 @@ import { IconButton, Input, TextField, Box, Divider, Card, CardActionArea, CardM
 import PropTypes from 'prop-types';
 import styles from '../Style/Style.jsx';
 import DeleteForeverRoundedIcon from '@material-ui/icons/DeleteForeverRounded';
+import Swal from 'sweetalert2/src/sweetalert2.js';
+import '../Style/Swal.scss';
 
 /* Radio MUI */
 import Radio from '@material-ui/core/Radio';
@@ -62,9 +64,32 @@ class Snippet_Page extends Component {
 
     deleteAction = (event, child) => {
         console.log('SUBMITTING FOR DELETION:', child);
-        this.props.dispatch({ type: 'DELETE_ACTION', payload: child});
-        this.setState({ state: this.state }); /* Used to re-render DOM */
-        this.props.dispatch({ type: 'FETCH_SNIPPET', payload: this.props.match.params.id });
+        Swal.fire({
+            title: "Delete the following action?",
+            text: child.action,
+            imageUrl: this.props.snippetEdit.snip_path,
+            // imageWidth: 400,
+            imageHeight: 200,
+            imageAlt: 'Image of Snippet',
+            showCancelButton: true,
+            textColor: 'black',
+            confirmButtonColor: '#8a2b2b',
+            cancelButtonColor: '#657394',
+            confirmButtonText: 'YES, REMOVE IT',
+            cancelButtonText: 'NO, KEEP IT',
+            background: '#fff url("../../background4.jpg")',
+        }).then((result) => {
+            if (result.value) {
+                this.props.dispatch({ type: 'DELETE_ACTION', payload: child });
+                Swal.fire(
+                    'Deleted!',
+                    'Your action has been deleted.',
+                    'success'
+                )
+                this.setState({ state: this.state }); /* Used to re-render DOM */
+                this.props.dispatch({ type: 'FETCH_SNIPPET', payload: this.props.match.params.id });
+            }
+        })
     }
 
     endingChange = (event) => {
@@ -161,6 +186,7 @@ class Snippet_Page extends Component {
                 {this.props.snippetEdit.snip_ending === false && <>
                     {this.props.child.map(child =>
                         <div key={child.id}>
+                            {/* DELETE BUTTON */}
                             <Button className={classes.spicy} size="small" variant="contained" color="secondary" onClick={(event) => this.handleClick(child, event)}>{child.action}</Button> <IconButton className={classes.spicy_edit} onClick={(event)=>this.deleteAction(event, child)}><DeleteForeverRoundedIcon /></IconButton><p />
                         </div>
 

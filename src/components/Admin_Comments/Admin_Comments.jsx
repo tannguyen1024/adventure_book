@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { Chip, TextField, Paper, Grid, Avatar, Box, Divider, Card, CardActionArea, CardMedia, CardContent, CardActions, Typography, withStyles, Button } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import styles from '../Style/Style.jsx';
+import Swal from 'sweetalert2/src/sweetalert2.js';
+import '../Style/Swal.scss';
 const moment = require('moment');
 
 class Admin_Comments extends Component {
@@ -13,7 +15,31 @@ class Admin_Comments extends Component {
 
     handleDelete = (event, comment) => {
         console.log ('Your Comment is:',comment)
-        this.props.dispatch({ type: 'DELETE_COMMENT', payload: comment.comment_id})
+        Swal.fire({
+            title: "Delete the following comment?",
+            text: comment.username + ": " + comment.comment,
+            imageUrl: comment.snip_path,
+            // imageWidth: 400,
+            imageHeight: 200,
+            imageAlt: 'Image of comment',
+            showCancelButton: true,
+            textColor: 'black',
+            confirmButtonColor: '#8a2b2b',
+            cancelButtonColor: '#657394',
+            confirmButtonText: 'YES, REMOVE IT',
+            cancelButtonText: 'NO, KEEP IT',
+            background: '#fff url("../../background4.jpg")',
+        }).then((result) => {
+            if (result.value) {
+                this.props.dispatch({ type: 'DELETE_COMMENT', payload: comment.comment_id })
+                Swal.fire(
+                    'Deleted!',
+                    'Your comment has been deleted.',
+                    'success'
+                )
+            }
+        })
+
     }
 
     render() {
