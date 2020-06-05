@@ -52,9 +52,10 @@ router.get('/child/:id', (req, res) => {
 router.post('/start/:id', rejectUnauthenticated, (req, res) => {
   let storyId = req.params.id;
   let defaultTitle = 'Snippet Title';
-  let defaultDescription = 'Adventurous Description';
-  const query = `INSERT INTO "snippet" (story_id, snip_title, snip_description) VALUES ($1, $2, $3) RETURNING id;`;
-  pool.query(query, [storyId, defaultTitle, defaultDescription])
+  let defaultDescription = `We're sorry.  This snippet has not been completed yet.`;
+  let defaultEnding = 'true';
+  const query = `INSERT INTO "snippet" (story_id, snip_title, snip_description, snip_ending) VALUES ($1, $2, $3, $4) RETURNING id;`;
+  pool.query(query, [storyId, defaultTitle, defaultDescription, defaultEnding])
     .then((result) => {
       res.send(result.rows);
     }).catch((error) => {
