@@ -1,8 +1,73 @@
--- INSERT INTO "user"
---     (username, password, admin)
--- VALUES
---     ('Tan', '$2a$10$TOxyLoVnx3sfRTcU47F25.8kYvWL7x4rJg/REiGsBButD8CwwkZbK', 'true'),
---     ('Linda', '$2a$10$I/s6RuKsCkTkRTQ5eqklU.cvjD4sSUFkI1XFfOuvF/uwJmzyvweaG', 'false');
+CREATE TABLE "user"
+(
+    "id" SERIAL PRIMARY KEY,
+    "username" VARCHAR (80) UNIQUE NOT NULL,
+    "password" VARCHAR (1000) NOT NULL,
+    "admin" BOOLEAN DEFAULT false
+);
+
+
+CREATE TABLE "story"
+(
+    "id" SERIAL PRIMARY KEY,
+    "story_title" VARCHAR(100) NOT NULL,
+    "story_description" VARCHAR(255) NOT NULL,
+    "story_path"
+        VARCHAR DEFAULT 'https://cdn.pixabay.com/photo/2017/07/22/11/46/adventure-2528477_1280.jpg',
+    "user_id" INT,
+    FOREIGN KEY ("user_id") REFERENCES "user"("id")
+);
+
+
+CREATE TABLE "snippet"
+(
+    "id" SERIAL PRIMARY KEY,
+    "snip_title" VARCHAR(50) NOT NULL,
+    "snip_description" VARCHAR NOT NULL,
+    "snip_ending" BOOLEAN DEFAULT 'false',
+    "snip_path"
+        VARCHAR DEFAULT 'https://cdn.pixabay.com/photo/2017/05/24/17/40/book-2341083_1280.jpg',
+    "story_id" INT,
+    "views" INT DEFAULT '0',
+    FOREIGN KEY ("story_id") REFERENCES story ("id")
+);
+
+
+CREATE TABLE "junction"
+(
+    "id" SERIAL PRIMARY KEY,
+    "parent" INT,
+    "child" INT,
+    "action" VARCHAR(120) NOT NULL,
+    FOREIGN KEY ("parent") REFERENCES snippet ("id"),
+    FOREIGN KEY ("child") REFERENCES snippet ("id")
+);
+
+
+CREATE TABLE "comment"
+(
+    "id" SERIAL PRIMARY KEY,
+    "user_id" INT,
+    "comment" VARCHAR (255) NOT NULL,
+    "comment_date" TIMESTAMPTZ DEFAULT NOW(),
+    "snippet_id" INT,
+    FOREIGN KEY ("snippet_id") REFERENCES "snippet"("id"),
+    FOREIGN KEY ("user_id") REFERENCES "user"("id")
+);
+
+
+INSERT INTO "user"
+    (username, password, admin)
+VALUES
+    ('Tan', '$2a$10$TOxyLoVnx3sfRTcU47F25.8kYvWL7x4rJg/REiGsBButD8CwwkZbK', 'true'),
+    ('Linda', '$2a$10$I/s6RuKsCkTkRTQ5eqklU.cvjD4sSUFkI1XFfOuvF/uwJmzyvweaG', 'true'),
+    ('Dane', '$2a$10$Mn7ixXSFHwC0RvxUwIvHzeqpZzcD7FBVnvi/mDcsf71zC/fiwyb1.', 'false'),
+    ('Dev', '$2a$10$MJx.TxtdniEYF5YPRHZEFONSKf6kbTJkqqXm3NGjXuQp6.gsM2XTy', 'false'),
+    ('Vi', '$2a$10$35hL2edh9HgzqvbOr07VwOZrFDaxeIIfaGfWjwb/OflexP.MfBCX6', 'true'),
+    ('Pibbil', '$2a$10$GsczqPCDrTEQ5IKHna7JaOoJ1krhJJOzrVT0ZBzy9uqodKiyPrNjy', 'true'),
+    ('shaokee', '$2a$10$hybCon2q7G/LASKaYltXuOWvhq7uljmcw92X6F8wPQ02gB.IVqI1G', 'true'),
+    ('some guy', '$2a$10$akL6q2rR28lM4iqA4sp00upC9J29JlJ/LDUbnn0Te2rksVcRQ8ACO', 'false');
+
 
 INSERT INTO "story"
     (user_id, story_title, story_description, story_path)
@@ -47,11 +112,20 @@ VALUES
     ( 'Becoming Super', 'Brrrrring.  The high school alarm goes off and you rush out of class.  It''s the firefly festival tonight!  There''s this Fussa tradition to go to Firefly Park and celebrate by eating a shaved ice dessert.  What a perfect treat for such a hot day.', 'false', 3,
         'https://images.unsplash.com/photo-1562233142-8b7334969c33?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3021&q=80'),
 
-    ( 'The early bird gets the worm...', 'As you leave school, you feel an overwhelming urge to run straight to the festival.  In the blink of an eye, you''re there!  Could it be possible that you blacked out during the run?', 'false', 3,
+    ( 'The early bird gets the worm...', 'You decide to beat the crowds and leave your friends behind.  As you start walking towards Firefly Park, the wind picks up slightly.  You feel your legs moving faster and faster.  Before you know it, you''re sprinting uncontrollably!', 'false', 3,
         'https://images.unsplash.com/photo-1481966115753-963394378f23?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1687&q=80'),
 
     ( 'A distant voice...', 'Pacing around the schoolyard, you wait for your best friend, Takeshi.  From behind, you hear the words "Yes, I''m so glad you waited for me!".  As you turn around, you see Takeshi walking towards you.  As he gets closer, you tell him, "Of course I waited for you!"  A confused look on Takeshi''s face as he repeats "I''m so glad you waited for me!".', 'false', 3,
-        'https://images.unsplash.com/photo-1544215830-1c67ed769a61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80');
+        'https://images.unsplash.com/photo-1544215830-1c67ed769a61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80'),
+
+    ( 'A Hard Stop...', 'Abruptly, you put the brakes on and stop running.  How bizarre!  You realize you''ve ran almost a mile in what seemed like seconds.  How could this be?  Did you blackout during the run?  Fortunately, you know this area of Fussa.  Unfortunately, it''s a terrible neighborhood.  In the distance, you can hear the screams of an older lady.', 'false', 3, 'https://images.unsplash.com/photo-1505072861857-fa749f6540a7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1649&q=80'),
+
+
+    ( 'Faster than fast...', 'With each blink you take, you are in a different area of town.  Could this be some kind of dream?  The speed takes over and you begin to lose yourself.  Light begins to fill your eyes as you travel faster and faster.  You have become one with the wind.', 'true', 3, 'https://miro.medium.com/max/2048/1*aHi0DGeU3pw4EMESVK3RJw.jpeg');
+
+--( 'Becoming Super','', 'false', 3, 
+--'https://cdn.pixabay.com/photo/2018/04/16/12/59/face-3324569_960_720.jpg'),
+
 INSERT INTO "junction"
     (parent, child, action)
 VALUES
@@ -64,17 +138,26 @@ VALUES
     (8, 9, 'Grab a sandwich to eat'),
     (8, 10, 'Drink yellow berry juice');
 
+
 INSERT INTO "junction"
     (parent, child, action)
 VALUES
     (11, 12, 'Run to the festival'),
-    (11, 13, 'Wait for your best friend');
+    (11, 13, 'Wait for your best friend'),
+    (12, 14, 'Slow down'),
+    (12, 15, 'Go even faster');
+
 
 INSERT INTO "comment"
-    (user_id, comment, snippet_id)
+    (user_id, comment, snippet_id, comment_date)
 VALUES
-    ('1', 'That was one of the most amazing stories I''ve ever read!', '4'),
-    ('2', 'i loved the part where I died', '2'),
-    ('1', 'so shocked!', '2'),
-    ('1', 'Mistakes were made!', '5'),
-    ('1', 'Hooray!  I give that ending a ten out of ten!', '10');
+    ('1', 'That was too short!', '4', '2020-06-02 13:45:09.250411+00'),
+    ('2', 'i loved the part where I died', '2', '2020-06-01 16:45:09.250411+00'),
+    ('1', 'I can''t believe that happened!', '2', '2020-06-02 17:45:09.250411+00'),
+    ('4', 'tiny drop of blood', '5', '2020-06-04 18:45:09.250411+00'),
+    ('2', 'Hooray!  I give that ending a ten out of ten!', '10', '2020-06-03 20:45:09.250411+00'),
+    ('3', 'OH NO, THEY GOT MY NECK!', '5', '2020-06-04 23:45:09.250411+00'),
+    ('5', 'Dang it. I’m dead alreAdy', '2', '2020-06-03 22:45:09.250411+00'),
+    ('5', 'Yasss!', '10', '2020-06-03 22:49:51.328775+00'),
+    ('5', 'Wow so perfect', '7', '2020-06-03 23:00:40.07294+00'),
+    ('8', 'The sandwich is a lie...', '9', '2020-06-04 16:08:43.546826+00');

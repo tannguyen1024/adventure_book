@@ -14,7 +14,8 @@ import EditIcon from '@material-ui/icons/Edit';
 class Home extends Component {
 
   componentDidMount = () => {
-    this.props.dispatch({ type: 'FETCH_STORY' })
+    this.props.dispatch({ type: 'FETCH_STORY' });
+    this.props.dispatch({ type: 'VIEW_UP' }); /* View Count */
   }
 
   startClick = (event, story) => {
