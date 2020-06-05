@@ -108,6 +108,8 @@ class Snippet_Page extends Component {
         this.props.dispatch({type: 'NEW_ACTION', payload: this.state});
         this.setState({ state: this.state }); /* Used to re-render DOM */
         this.props.dispatch({ type: 'FETCH_SNIPPET', payload: this.props.match.params.id });
+        this.setState({action: ''})
+        this.props.history.push(`/snippet_edit/${this.props.match.params.id}`);
     }
 
 
