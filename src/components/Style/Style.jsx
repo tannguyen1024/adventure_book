@@ -164,6 +164,11 @@ const styles = {
         fontFamily: 'Courgette', 
         // fontSize: 17,
     },
+    cursive_2: {
+        fontFamily: 'Courgette',
+        fontSize: 16,
+        color: '#616161',
+    },
     cursive_middle: {
         textAlign: 'center',
         // display: 'inline-block', //Typically a button wouldn't need its own line        

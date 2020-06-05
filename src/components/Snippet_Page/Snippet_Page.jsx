@@ -46,7 +46,7 @@ class Snippet_Page extends Component {
                                     <Typography className={classes.cursive} gutterBottom variant="h5" component="h2">
                                         {this.props.snippet.snip_title} {this.props.user.admin && <IconButton onClick={() => this.props.history.push(`/snippet_edit/${this.props.match.params.id}`)} className={classes.spicy_edit}><EditIcon /></IconButton>}
                                     </Typography>
-                                    <Typography className={classes.cursive} variant="body2" color="textSecondary" component="p">
+                            <Typography className={classes.cursive_2} variant="body2" component="p">
                                         {this.props.snippet.snip_description} 
                                     </Typography>
                                     <Typography className={classes.ending}>

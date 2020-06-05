@@ -33,7 +33,7 @@ class Story_Select extends Component {
                                 <Typography className={classes.cursive} gutterBottom variant="h5" component="h2">
                                     {snippet.snip_title} {this.props.user.admin && <IconButton onClick={() => this.props.history.push(`/snippet_edit/${snippet.snippet_id}`)} className={classes.spicy_edit}><EditIcon /></IconButton>}
                                 </Typography>
-                                <Typography className={classes.cursive} variant="body2" color="textSecondary" component="p">
+                                <Typography className={classes.cursive_2} variant="body2" color="textSecondary" component="p">
                                     {snippet.snip_description}
                                 </Typography>
                             </CardContent>

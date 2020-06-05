@@ -65,11 +65,11 @@ class Home extends Component {
                   {admin && <IconButton className={classes.spicy_edit} onClick={(event) => this.editClick(event, story)}><EditIcon /></IconButton>}
                   {/* The line above causes a warning in Inspect Tool */}
                 </Typography>
-                <Typography className={classes.cursive} variant="body2" color="textSecondary" component="p">
+                <Typography className={classes.cursive_2} variant="body2" color="textSecondary" component="p">
                   {story.story_description}
-                </Typography>
-                <Typography className={classes.cursive} color="textSecondary" component="h6">
-                  Crafted by {story.author}
+                </Typography><br/>
+                <Typography className={classes.cursive} component="h6">
+                  Author: {story.author}
                 </Typography>
               </CardContent>
             </CardActionArea>
