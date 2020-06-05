@@ -5,6 +5,7 @@ import { IconButton, Box, Divider, Card, CardActionArea, CardMedia, CardContent,
 import PropTypes from 'prop-types';
 import styles from '../Style/Style.jsx';
 import EditIcon from '@material-ui/icons/Edit';
+import LoopIcon from '@material-ui/icons/Loop';
 
 class Snippet_Page extends Component {
     state = '';
@@ -52,6 +53,10 @@ class Snippet_Page extends Component {
                                     {this.props.snippet.snip_ending &&
                                         <>
                                             The End.
+                                            <br/>
+                                                <IconButton className={classes.spicy_edit} variant="contained" onClick={()=>this.props.history.push('/home')}><LoopIcon /></IconButton>
+                                            <br/>
+                                            Restart?
                                             </>
                                         }</Typography>
                                 </CardContent>
