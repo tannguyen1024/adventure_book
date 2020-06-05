@@ -6,7 +6,7 @@
   "dependencies": {
     "@material-ui/core": "^4.10.0",
     "@material-ui/icons": "^4.9.1",
-    "@sweetalert2/theme-borderless": "^3.1.4",
+    "@sweetalert2/themes": "^3.1.4",
     "axios": "^0.19.0",
     "bcryptjs": "^2.4.3",
     "cookie-session": "^2.0.0-beta.3",

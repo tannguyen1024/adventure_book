@@ -77,7 +77,7 @@ class Snippet_Page extends Component {
             cancelButtonColor: '#657394',
             confirmButtonText: 'YES, REMOVE IT',
             cancelButtonText: 'NO, KEEP IT',
-            background: '#fff url("../../background5.jpg")',
+            background: '#fff url("../../background3.jpg")',
         }).then((result) => {
             if (result.value) {
                 this.props.dispatch({ type: 'DELETE_ACTION', payload: child });
