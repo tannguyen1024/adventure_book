@@ -23,7 +23,7 @@ class Admin_Create_Story extends Component {
             cancelButtonColor: '#657394',
             confirmButtonText: 'Yes',
             cancelButtonText: 'No! Keep my work',
-            background: '#fff url("https://cdn2.vectorstock.com/i/1000x1000/15/31/low-polygon-shapes-black-light-background-dark-vector-21691531.jpg")',
+            background: '#fff url("../../background3.jpg")',
         }).then((result) => {
             if (result.value) {
                 this.props.history.push('/home')
