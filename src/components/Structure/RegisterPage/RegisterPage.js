@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import { Input, withStyles, Button } from '@material-ui/core'
+import PropTypes from 'prop-types';
+import styles from '../../Style/Style.jsx';
 
 class RegisterPage extends Component {
   state = {
@@ -30,6 +33,7 @@ class RegisterPage extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     return (
       <div>
         {this.props.errors.registrationMessage && (
@@ -45,7 +49,7 @@ class RegisterPage extends Component {
           <div>
             <label htmlFor="username">
               Username:
-              <input
+              <Input
                 type="text"
                 name="username"
                 value={this.state.username}
@@ -56,7 +60,7 @@ class RegisterPage extends Component {
           <div>
             <label htmlFor="password">
               Password:
-              <input
+              <Input
                 type="password"
                 name="password"
                 value={this.state.password}
@@ -74,19 +78,21 @@ class RegisterPage extends Component {
           </div>
         </form>
         <center>
-          <button
+          <p>Already have an account?</p><Button
             type="button"
-            className="link-button"
+            className={classes.spicy_submit}
             onClick={() => {this.props.dispatch({type: 'SET_TO_LOGIN_MODE'})}}
           >
             Login
-          </button>
+          </Button>
         </center>
       </div>
     );
   }
 }
 
+
+RegisterPage.propTypes = { classes: PropTypes.object.isRequired };
 // Instead of taking everything from state, we just want the error messages.
 // if you wanted you could write this code like this:
 // const reduxStateOnProps = ({errors}) => ({ errors });
@@ -94,5 +100,5 @@ const reduxStateOnProps = state => ({
   errors: state.errors,
 });
 
-export default connect(reduxStateOnProps)(RegisterPage);
+export default connect(reduxStateOnProps)(withStyles(styles)(RegisterPage));
 

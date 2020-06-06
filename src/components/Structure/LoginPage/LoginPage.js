@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Input, Button, withStyles } from '@material-ui/core';
+import PropTypes from 'prop-types';
+import styles from '../../Style/Style.jsx';
 
 class LoginPage extends Component {
   state = {
@@ -30,6 +33,7 @@ class LoginPage extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     return (
       <div>
         {this.props.errors.loginMessage && (
@@ -45,7 +49,9 @@ class LoginPage extends Component {
           <div>
             <label htmlFor="username">
               Username:
-              <input
+              <Input
+                variant="contained"
+                fullWidth
                 type="text"
                 name="username"
                 value={this.state.username}
@@ -56,7 +62,9 @@ class LoginPage extends Component {
           <div>
             <label htmlFor="password">
               Password:
-              <input
+              <Input
+                variant="outlined"
+                fullWidth
                 type="password"
                 name="password"
                 value={this.state.password}
@@ -74,19 +82,20 @@ class LoginPage extends Component {
           </div>
         </form>
         <center>
-          <button
+          <p>Don't have an account?</p><Button
             type="button"
-            className="link-button"
+            className={classes.spicy_submit}
             onClick={() => {this.props.dispatch({type: 'SET_TO_REGISTER_MODE'})}}
           >
-            Register
-          </button>
+            Create New Account
+          </Button>
         </center>
       </div>
     );
   }
 }
 
+LoginPage.propTypes = { classes: PropTypes.object.isRequired };
 // Instead of taking everything from state, we just want the error messages.
 // if you wanted you could write this code like this:
 // const reduxStateOnProps = ({errors}) => ({ errors });
@@ -94,4 +103,4 @@ const reduxStateOnProps = state => ({
   errors: state.errors,
 });
 
-export default connect(reduxStateOnProps)(LoginPage);
+export default connect(reduxStateOnProps)(withStyles(styles)(LoginPage));

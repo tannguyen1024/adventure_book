@@ -32,6 +32,16 @@ const styles = {
             boxShadow: '3px 3px 50px black',
         }
     },
+    card_loading: {
+        maxWidth: 370,
+        backgroundColor: 'rgba(222, 222, 222, 0.1)',
+        marginLeft: '25px',
+        marginTop: '25px',
+    },
+    media_loading: {
+        width: 370,
+        paddingTop: '40%', // 16:9
+    },
     media_create: {
         width: 600,
         paddingTop: '30%', // 16:9
