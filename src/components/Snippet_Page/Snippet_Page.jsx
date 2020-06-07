@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import styles from '../Style/Style.jsx';
 import EditIcon from '@material-ui/icons/Edit';
 import LoopIcon from '@material-ui/icons/Loop';
+import Speech from 'react-speech';
 
 class Snippet_Page extends Component {
     state = '';
@@ -29,7 +30,93 @@ class Snippet_Page extends Component {
         }
     }
     render() {
+
         const { classes } = this.props;
+
+        const style = {
+            container: {
+                width: '100%'
+            },
+            text: {
+                width: '100%',
+                display: '',
+                color: 'gray',
+            },
+            play: {
+                hover: {
+                    backgroundColor: 'rgba(154, 70, 70,0.5)',
+                    // boxShadow: '2px 2px 18px black',
+                    // fontSize: '50px',
+                },
+                button: {
+                    float: 'right',
+                    width: '40',
+                    height: '40',
+                    cursor: 'pointer',
+                    pointerEvents: 'none',
+                    fontSize: '15px',
+                    outline: 'none',
+                    marginRight: '15px',
+                    backgroundColor: 'rgba(255, 255, 255, 0)',
+                    border: 'rgba(255,255,255,1)',
+                    borderRadius: 6,
+                    fontFamily: 'Courgette',
+                    transition: 'all 0.5s',
+                    // boxShadow: '3px 3px 3px'
+                }
+            },
+            stop: {
+                hover: {
+                    backgroundColor: '#8a2b2b',
+                    boxShadow: '2px 2px 18px black',
+                },
+                button: {
+                    float: 'right',
+                    width: '60',
+                    height: '40',
+                    cursor: 'pointer',
+                    pointerEvents: 'none',
+                    fontSize: '15px',
+                    outline: 'none',
+                    // marginLeft: '5px',
+                    backgroundColor: 'black',
+                    border: 'solid px rgba(255,255,255,1)',
+                    borderRadius: 5,
+                    transition: 'all 0.5s',
+                    // boxShadow: '3px 3px 3px'
+                }
+            },
+            pause: {
+                hover: {
+                    backgroundColor: 'GhostWhite'
+                },
+                button: {
+                    width: '34',
+                    height: '34',
+                    cursor: 'pointer',
+                    pointerEvents: 'none',
+                    outline: 'none',
+                    backgroundColor: 'Gainsboro',
+                    border: 'solid 1px rgba(255,255,255,1)',
+                    borderRadius: 6
+                }
+            },
+            resume: {
+                hover: {
+                    backgroundColor: 'GhostWhite'
+                },
+                button: {
+                    width: '34',
+                    height: '34',
+                    cursor: 'pointer',
+                    pointerEvents: 'none',
+                    outline: 'none',
+                    backgroundColor: 'Gainsboro',
+                    border: 'solid 1px rgba(255,255,255,1)',
+                    borderRadius: 6
+                }
+            }
+        };
 
         return (
             <>
@@ -44,7 +131,7 @@ class Snippet_Page extends Component {
                                 /></Box>
                                 <CardContent>
                                     <Typography className={classes.cursive} gutterBottom variant="h5" component="h2">
-                                        {this.props.snippet.snip_title} {this.props.user.admin && <IconButton onClick={() => this.props.history.push(`/snippet_edit/${this.props.match.params.id}`)} className={classes.spicy_edit}><EditIcon /></IconButton>}
+                                {this.props.snippet.snip_title} <Speech styles={style} textAsButton={true} displayText="Press for Audio ▶️" text={this.props.snippet.snip_description} voice="Daniel" /> {this.props.user.admin && <IconButton onClick={() => this.props.history.push(`/snippet_edit/${this.props.match.params.id}`)} className={classes.spicy_edit}><EditIcon /></IconButton>}
                                     </Typography>
                             <Typography className={classes.cursive_2} variant="body2" component="p">
                                         {this.props.snippet.snip_description} 
