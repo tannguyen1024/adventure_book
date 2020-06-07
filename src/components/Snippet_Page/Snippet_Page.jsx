@@ -57,6 +57,7 @@ class Snippet_Page extends Component {
                     fontSize: '15px',
                     outline: 'none',
                     marginRight: '15px',
+                    marginTop: '2px',
                     backgroundColor: 'rgba(255, 255, 255, 0)',
                     border: 'rgba(255,255,255,1)',
                     borderRadius: 6,
