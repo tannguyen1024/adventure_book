@@ -1,14 +1,19 @@
-# ![Adventure Book](Wireframe/LOGO.png)
+# ![Adventure Book](Wireframe/logo_black.png)
 
 >by Tan Van Nguyen
 
 >Project Scoping Date: May 18th, 2020
+>Project Completion Date: June 8th, 2020
 
 >Technologies Utilized: 
 ```Postgresql (SQL), Express, Node, React, HTML5, CSS, Material UI```
 
 ## Project Summary
 - The **Adventure Book** is aimed to fully realize the joys of the *Choose Your Own Adventure* novels that were popular in the 90’s.  These novels often started on one page and the reader would make decisions that would take them to a different page of the book.  This branching decision making made every reader’s experience different.  The *Adventure Book* doesn’t stop there however!  As an administrator, you can also create your own adventure from scratch with multiple branching paths and endings.
+
+## Video Example
+- A short video demonstrating Adventure Book after the two week sprint.
+[![Video](Wireframe/Adventure_Book_Preview.png)](https://youtu.be/E-_Uy9i_aJc)
 
 ## Wireframe Example
 - A full overview image of the Adventure Book.  Utilize your browser's zoom feature or click the image for a larger view.
@@ -38,7 +43,7 @@
 - A **story** has a title, description, and picture.  They can contain multiple *snippets*.  Administrators can create, update, and delete *stories*.
 
 #### Snippets
-- A **snippet** has a title, description, a picture, and a list of all the other *snippets* which are linked together.  Each *snippet* contains a **type**: *beginning*, *middle*, and *ending*.  The ending type allows adventurers to post a comment and view previous comments.  As with *stories*, administrators can create, update, and delete *snippets*.
+- A **snippet** has a title, description, a picture, and a list of all the other *snippets* which are linked together.  Each *snippet* has an *ending* BOOLEAN option.  if ending is set to TRUE will allow adventurers to post a comment and view previous comments.  If FALSE, will allow Administrators to add more actions and child snippets.  As with *stories*, administrators can create, update, and delete *snippets*.
 
 ## Database
 
