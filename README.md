@@ -13,7 +13,7 @@
 
 ## Video Example
 - A short video demonstrating Adventure Book after the two week sprint.
-[![Video](Wireframe/Adventure_Book_Preview.png)](https://youtu.be/E-_Uy9i_aJc)
+[![Video](Wireframe/Adventure_Book_Preview.png)](https://youtu.be/1Vm5sj3crUo)
 
 ## Wireframe Example
 - A full overview image of the Adventure Book.  Utilize your browser's zoom feature or click the image for a larger view.
