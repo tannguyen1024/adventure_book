@@ -65,10 +65,7 @@
 
 [![Database](Wireframe/ERD.png)](https://dbdesigner.page.link/TXqVPfzEwVwzTyp66)
 
-## Stretch Goals
-
-#### Text-To-Speech
-- Implementing *Text-To-Speech* will allow better accessibility to younger audiences and others with issues reading.
+## Upcoming Features
 
 #### Uppy
 - *Uppy* will allow administrators to upload images online from popular sites such as Facebook, Instagram, Dropbox, or even their local computer.  *Uppy* will then provide a URL that administrators can use for their stories and snippets.
@@ -84,6 +81,3 @@
 
 #### Obtainable Items
  - This will allow adventurers to obtain items such as a key which can unlock snippets that were not available to the adventurer previously.  These will be stored in the database for the current playthrough.
-
- // localhost:5000/api/story/2/
- // localhost:5000/:id/:thing/:something
