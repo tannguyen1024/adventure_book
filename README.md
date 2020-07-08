@@ -6,7 +6,7 @@
 >Project Completion Date: June 8th, 2020
 
 >Technologies Utilized: 
-```Postgresql (SQL), Express, React, Node, HTML5, CSS, Material UI```
+```PostgreSQL, Express, React.JS, Node.JS, HTML5, CSS, Material UI```
 
 ## Project Summary
 - The **Adventure Book** is aimed to fully realize the joys of the *Choose Your Own Adventure* novels that were popular in the 90’s.  These novels often started on one page and the reader would make decisions that would take them to a different page of the book.  This branching decision making made every reader’s experience different.  The *Adventure Book* doesn’t stop there however!  As an administrator, you can also create your own adventure from scratch with multiple branching paths and endings.
@@ -15,11 +15,7 @@
 - A short video demonstrating Adventure Book after the two week sprint.
 [![Video](Wireframe/Adventure_Book_Preview.png)](https://youtu.be/1Vm5sj3crUo)
 
-## Wireframe Example
-- A full overview image of the Adventure Book.  Utilize your browser's zoom feature or click the image for a larger view.
-![Wireframe](Wireframe/WIREFRAME.png)
-
-## Deep Dive
+## Application Deep Dive
 
 ### Login Page
 - Every person who visits the Adventure Book is an **adventurer**!  Adventurers can start by creating their account at the login page.  Depending on the login, each adventurer's access determines which view they will see; an **administrator** or **standard** view.  Upon login, administrators have access to view all adventurers in a list and grant administrator access if necessary.
@@ -41,7 +37,7 @@
 ![Landing View](images/landing.png)
 
 #### Snippets
-- A **snippet** has a title, description, a picture, and a list of all the other *snippets* which are linked together.  Each *snippet* has an *ending* BOOLEAN option.  If ending is set to TRUE will allow adventurers to post a comment and view previous comments.  If FALSE, will allow Administrators to add more actions and child snippets.  As with *stories*, administrators can create, update, and delete *snippets*.
+- A **snippet** has a title, description, a picture, and a list of all the other *snippets* which are linked together.  Each *snippet* has an *ending* BOOLEAN option.  If ending is set to TRUE will allow adventurers to post a comment and view previous comments.  If FALSE, will allow Administrators to add more actions and child snippets.  As with *stories*, administrators can create, update, and delete *snippets*.  Snippets can be read aloud using Text-to-Speech API by pressing the Play icon.
 
 ![Standard View](images/snippet.png)
 
@@ -53,7 +49,7 @@
 
 - The **Story** table is the first thing that adventurers see upon login.  Choosing a story will display snippets.  Each snippet is connected to a story.
 
-- The **Snippet** table is a list of all the snippets of a story.  Snippets are split into three different *types*.  The *end* type can have comments posted on them by adventurers.
+- The **Snippet** table is a list of all the snippets of a story.  An *ending* type of TRUE can have comments posted on them by adventurers.
 
 ### Miscellaneous Tables
 
@@ -81,3 +77,7 @@
 
 #### Obtainable Items
  - This will allow adventurers to obtain items such as a key which can unlock snippets that were not available to the adventurer previously.  These will be stored in the database for the current playthrough.
+
+## Scoping Wireframe Example
+- A full overview image of the Adventure Book.  Utilize your browser's zoom feature or click the image for a larger view.
+![Wireframe](Wireframe/WIREFRAME.png)
