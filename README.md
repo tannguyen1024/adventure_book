@@ -6,7 +6,7 @@
 >Project Completion Date: June 8th, 2020
 
 >Technologies Utilized: 
-```Postgresql (SQL), Express, Node, React, HTML5, CSS, Material UI```
+```Postgresql (SQL), Express, React, Node, HTML5, CSS, Material UI```
 
 ## Project Summary
 - The **Adventure Book** is aimed to fully realize the joys of the *Choose Your Own Adventure* novels that were popular in the 90’s.  These novels often started on one page and the reader would make decisions that would take them to a different page of the book.  This branching decision making made every reader’s experience different.  The *Adventure Book* doesn’t stop there however!  As an administrator, you can also create your own adventure from scratch with multiple branching paths and endings.
@@ -24,26 +24,26 @@
 ### Login Page
 - Every person who visits the Adventure Book is an **adventurer**!  Adventurers can start by creating their account at the login page.  Depending on the login, each adventurer's access determines which view they will see; an **administrator** or **standard** view.  Upon login, administrators have access to view all adventurers in a list and grant administrator access if necessary.
 
-![Standard View](Wireframe/LOGIN.png)
-![Standard View](Wireframe/NEW_USER.png)
+![Standard View](images/login.png)
+![Standard View](images/register.png)
 
 ### Standard View
 - Adventurers can login, choose a story, and make decisions in various branching *snippets* to reach an *ending*.  Once the adventurer has reached an *ending*, they can post a comment and view previous comments on that ending.
 
-![Standard View](Wireframe/USER.png)
-
 ### Administrator View
 - Administrator access ramps up the fun!  Adventurers with *administrator* access will have the ability to create brand new *stories* & *snippets*.  They can also make changes to existing *stories* & *snippets*.  Administrators can delete comments left by adventurers on *ending* pages.  Stories will list which administrator created them.
-
-![Admin View](Wireframe/ADMIN.png)
 
 ## Components
 
 #### Stories 
-- A **story** has a title, description, and picture.  They can contain multiple *snippets*.  Administrators can create, update, and delete *stories*.
+- A **story** has a title, description, and picture.  They can contain multiple *snippets*.  Administrators can create, update, and delete *stories*.  A list of all stories can be found on the landing page.
+
+![Landing View](images/landing.png)
 
 #### Snippets
-- A **snippet** has a title, description, a picture, and a list of all the other *snippets* which are linked together.  Each *snippet* has an *ending* BOOLEAN option.  if ending is set to TRUE will allow adventurers to post a comment and view previous comments.  If FALSE, will allow Administrators to add more actions and child snippets.  As with *stories*, administrators can create, update, and delete *snippets*.
+- A **snippet** has a title, description, a picture, and a list of all the other *snippets* which are linked together.  Each *snippet* has an *ending* BOOLEAN option.  If ending is set to TRUE will allow adventurers to post a comment and view previous comments.  If FALSE, will allow Administrators to add more actions and child snippets.  As with *stories*, administrators can create, update, and delete *snippets*.
+
+![Standard View](images/snippet.png)
 
 ## Database
 
